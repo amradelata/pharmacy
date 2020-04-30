@@ -1,0 +1,65 @@
+body {
+  font-family: 'Cairo', sans-serif;
+
+}
+.notification {
+  text-align: center
+}
+
+.map {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.mybtn {
+  background: #9297b8;
+  border: none;
+  color: #fff;
+}
+
+.btncontaner {
+  padding: 20px;
+  background: #1d2c4d
+}
+
+.notification.is-primary,
+.notification.is-danger {
+  margin-bottom: 0;
+}
+
+
+.displayNone {
+  display: none;
+}
+
+
+.navbar-item img{
+  max-height: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+/* phone  */
+@media (max-width: 480px) {
+  .menuImg {
+  padding: 5px 0px 0 17px;
+  max-height: 1.75rem;
+}
+}
+
+/* laptop */
+@media screen and (min-width: 1000px) and (max-width: 1407px) {
+  #navbarphone {
+    display: none;
+  }
+}
+/* dell */
+@media screen and (min-width: 1408px) {
+  #navbarphone {
+    display: none;
+  }
+}
