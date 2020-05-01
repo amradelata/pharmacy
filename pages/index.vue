@@ -3,9 +3,9 @@
     <!-- loding -->
     <div class="spalsh" ref="splash">
       <div class="lodingContent">
-        <!-- <h1 class="is-size-1">الصيدليه</h1> -->
+        <h1 class="is-size-1">الصيدليه</h1>
         <img src="~/assets/img/loding.gif" />
-        <!-- <h3 class="is-size-3">احدث تطبيق يقدم خدمه توصيل العلاج عبر الانترنت</h3> -->
+        <h3 class="is-size-3">احدث تطبيق يقدم خدمه توصيل العلاج عبر الانترنت</h3>
       </div>
     </div>
     <!-- my app -->
@@ -37,9 +37,9 @@ export default {
   },
   methods: {
     firstLoding() {
-      console.log(this.$refs["myApp"], this.$refs["splash"]);
-      this.$refs["myApp"].style.display = "inline-block";
-      this.$refs["splash"].style.display = "none";
+      // console.log(this.$refs["myApp"], this.$refs["splash"]);
+      // this.$refs["myApp"].style.display = "inline-block";
+      // this.$refs["splash"].style.display = "none";
     }
   },
   mounted() {
@@ -52,9 +52,6 @@ export default {
 
 
 <style  scoped>
-body {
-  font-family: "Cairo", sans-serif;
-}
 .spalsh {
   background: #191f26;
   color: aliceblue;
@@ -64,9 +61,9 @@ body {
   right: 0;
   left: 0;
 }
-/* .spalsh h1 {
+.spalsh h1 {
   color: #25f0ff;
-} */
+}
 
 .lodingContent {
   position: absolute;
@@ -76,5 +73,8 @@ body {
   transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 768px) {
+  .spalsh h3 {
+    font-size: 1.25rem !important;
+  }
 }
 </style>
