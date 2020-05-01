@@ -1,55 +1,65 @@
 <template>
   <div>
-    <nuxt />
+    <!-- loding -->
+    <div class="spalsh" ref="splash">
+      <div class="lodingContent">
+        <h1 class="is-size-1">الصيدليه</h1>
+        <img src="~/assets/img/loding.gif" />
+        <h3 class="is-size-3">احدث تطبيق يقدم خدمه توصيل العلاج عبر الانترنت</h3>
+      </div>
+    </div>
+    <!-- my app -->
+    <div dir="rtl" lang="ar" ref="myApp" class="displayNone">
+      <myVav />
+      <nuxt />
+    </div>
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+import myVav from "~/components/myVav.vue";
+export default {
+  components: {
+    myVav
+  },
+  methods: {
+    firstLoding() {
+      console.log(this.$refs["myApp"], this.$refs["splash"]);
+      this.$refs["myApp"].style.display = "inline-block";
+      this.$refs["splash"].style.display = "none";
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.firstLoding();
+    }, 1000);
+  }
+};
+</script>
+<style  scoped>
+.spalsh {
+  background: #191f26;
+  color: aliceblue;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.spalsh h1 {
+  color: #25f0ff;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+.lodingContent {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@media screen and (max-width: 768px) {
+  .spalsh h3 {
+    font-size: 1.25rem !important;
+  }
 }
 </style>

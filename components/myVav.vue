@@ -27,32 +27,32 @@
             الرئيسية
           </nuxt-link>
 
-          <nuxt-link to="/" class="navbar-item">
+          <nuxt-link to="/orders" class="navbar-item">
             <img src="~/assets/img/orders.svg" class="menuImg" />
             الطلبات
           </nuxt-link>
 
-          <nuxt-link to="/" class="navbar-item">
+          <nuxt-link to="/Profits" class="navbar-item">
             <img src="~/assets/img/Profits.svg" class="menuImg" />
             المبيعات و الارباح
           </nuxt-link>
 
-          <nuxt-link to="/" class="navbar-item">
+          <nuxt-link to="/bell" class="navbar-item">
             <img src="~/assets/img/bell.svg" class="menuImg" />
             الاشعارات
           </nuxt-link>
 
-          <nuxt-link to="/" class="navbar-item">
+          <nuxt-link to="/user" class="navbar-item">
             <img src="~/assets/img/user.svg" class="menuImg" />
             الحساب
           </nuxt-link>
 
-          <nuxt-link to="/" class="navbar-item">
+          <nuxt-link to="/setings" class="navbar-item">
             <img src="~/assets/img/setings.svg" class="menuImg" />
             اعدادات الصيدليه
           </nuxt-link>
 
-          <nuxt-link to="/" class="navbar-item">
+          <nuxt-link to="/help" class="navbar-item">
             <img src="~/assets/img/help.svg" class="menuImg" />
             المساعده
           </nuxt-link>
@@ -72,32 +72,32 @@
           الرئيسية
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/orders" class="navbar-item">
           <img src="~/assets/img/orders.svg" class="menuImg" />
           الطلبات
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/Profits" class="navbar-item">
           <img src="~/assets/img/Profits.svg" class="menuImg" />
           المبيعات و الارباح
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/bell" class="navbar-item">
           <img src="~/assets/img/bell.svg" class="menuImg" />
           الاشعارات
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/user" class="navbar-item">
           <img src="~/assets/img/user.svg" class="menuImg" />
           الحساب
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/setings" class="navbar-item">
           <img src="~/assets/img/setings.svg" class="menuImg" />
           اعدادات الصيدليه
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/help" class="navbar-item">
           <img src="~/assets/img/help.svg" class="menuImg" />
           المساعده
         </nuxt-link>

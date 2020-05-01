@@ -1,80 +1,163 @@
 <template>
   <div>
-    <!-- loding -->
-    <div class="spalsh" ref="splash">
-      <div class="lodingContent">
-        <h1 class="is-size-1">الصيدليه</h1>
-        <img src="~/assets/img/loding.gif" />
-        <h3 class="is-size-3">احدث تطبيق يقدم خدمه توصيل العلاج عبر الانترنت</h3>
-      </div>
+    <notification />
+    <!-- map -->
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13913.965682582799!2d30.86137795!3d29.326590599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1580298588986!5m2!1sen!2seg"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        style="border:0;"
+        allowfullscreen
+      ></iframe>
     </div>
-    <!-- my app -->
-    <div dir="rtl" lang="ar" ref="myApp" class="displayNone">
-      <myVav />
-      <notification />
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13913.965682582799!2d30.86137795!3d29.326590599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1580298588986!5m2!1sen!2seg"
-          width="100%"
-          height="100%"
-          frameborder="0"
-          style="border:0;"
-          allowfullscreen
-        ></iframe>
+    <!-- map -->
+
+    <!--  simulate-->
+    <div style="text-align: center; padding: 35px">
+      <button class="button is-warning" @click="youHaveOrder()">simulate i have order</button>
+    </div>
+
+    <div class="newOrder displayNone" ref="newOrder">
+      <div class="cards">
+        <div class="card">
+          <label>السلع المطلوبه</label>
+          <hr />
+          <img src="~/assets/img/غسول.png" />
+          <div class="contnt">
+            <p class="name">Listrine 2</p>
+            <span class="price">17,50 EGP</span>
+          </div>
+          <span class="qt">x1</span>
+          <hr />
+          <img src="~/assets/img/غسول.png" />
+          <div class="contnt">
+            <p class="name">Listrine</p>
+            <span class="price">50,75 EGP</span>
+          </div>
+          <span class="qt">x1</span>
+          <hr />
+          <span class="total">:المجموع</span>
+          <span class="totalNumper">68.25</span>
+        </div>
+        <div class="card">
+          <label>التعليقات المصوره والمكتوبه</label>
+          <hr />
+          <img src="~/assets/img/سيجنالتو.jpg" />
+          <hr />
+          <p class="discrpthintext">محتاج معجون اسنان سجنل تو او المسواك</p>
+        </div>
+        <div class="card">
+          <label>توصيل الى</label>
+          <hr />
+          <p class="discrpthintext">16 شارع سعد زغلول</p>
+        </div>
+      </div>
+      <div class="mybutton">
+        <button class="button is-success">قبول</button>
+        <button class="button is-danger">رفض الطلب</button>
       </div>
     </div>
   </div>
+  <!--  simulate-->
 </template>
-
 <script>
-import myVav from "~/components/myVav.vue";
 import notification from "~/components/notification.vue";
 
 export default {
   components: {
-    myVav,
     notification
   },
   methods: {
-    firstLoding() {
-      // console.log(this.$refs["myApp"], this.$refs["splash"]);
-      // this.$refs["myApp"].style.display = "inline-block";
-      // this.$refs["splash"].style.display = "none";
+    youHaveOrder() {
+      this.$refs["newOrder"].classList.toggle("displayNone");
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.firstLoding();
-    }, 1000);
   }
 };
 </script>
 
-
-<style  scoped>
-.spalsh {
-  background: #191f26;
-  color: aliceblue;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+<style scoped>
+.cards {
+  display: flex;
+  flex-wrap: wrap;
 }
-.spalsh h1 {
-  color: #25f0ff;
+.newOrder {
+  position: relative;
+  padding: 35px;
 }
-
-.lodingContent {
-  position: absolute;
+.newOrder .mybutton {
   text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+}
+.newOrder .mybutton button {
+  margin: 35px 0;
+  font-size: 20px;
+  width: 150px;
+}
+.card {
+  direction: ltr;
+  padding: 35px;
+  width: calc(33.333% - 20px);
+  margin: 10px;
+  display: inline-block;
+  box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22);
+}
+label {
+  float: right;
+  font-size: 25px;
+}
+.card img {
+  width: 100px;
+  /* display: inline-block; */
+}
+.contnt {
+  display: inline-block;
+}
+.contnt .name {
+  /* display: inline-block; */
+}
+.contnt .price {
+  /* display: block; */
+  color: #6c5ce7;
+  font-weight: 900;
+}
+.qt {
+  /* display: block; */
+  float: right;
+  font-weight: 900;
+  /* margin-right: 50px; */
+  margin-top: 80px;
+}
+.total {
+  /* display: block; */
+  float: right;
+  font-weight: 900;
+  /* margin-right: 50px; */
+}
+.totalNumper {
+  /* display: block; */
+  float: right;
+  font-weight: 900;
+  margin-right: 50px;
+  color: #00a8ff;
+}
+.discrpthintext {
+  /* display: block; */
+  float: right;
 }
 @media screen and (max-width: 768px) {
-  .spalsh h3 {
-    font-size: 1.25rem !important;
+  .newOrder {
+    padding: 0;
+  }
+  .card {
+    width: calc(100% - 20px);
+    text-align: center;
+    padding: 35px 50px 35px 0;
+  }
+
+  label {
+    font-size: 20px;
   }
 }
 </style>
+
