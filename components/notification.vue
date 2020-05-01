@@ -21,12 +21,14 @@ export default {
     togelnotification() {
       this.$refs["primary"].classList.toggle("displayNone");
       this.$refs["danger"].classList.toggle("displayNone");
+      let herobtn = this.$refs["cangemybtn"];
 
-      var x = this.$refs["cangemybtn"];
-      if (x.innerHTML === "متصل") {
-        x.innerHTML = "غير متصل";
+      if (herobtn.innerHTML === "متصل") {
+        herobtn.innerHTML = "غير متصل";
+        herobtn.style.background = "#9297b8";
       } else {
-        x.innerHTML = "متصل";
+        herobtn.innerHTML = "متصل";
+        herobtn.style.background = "#2cd1b2";
       }
     }
   }
