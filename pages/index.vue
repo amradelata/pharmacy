@@ -55,8 +55,12 @@
         </div>
       </div>
       <div class="mybutton">
-        <button class="button is-success">قبول</button>
-        <button class="button is-danger">رفض الطلب</button>
+        <nuxt-link to="/acceptinactive">
+          <button class="button is-success">قبول</button>
+        </nuxt-link>
+        <nuxt-link to="/cancel">
+          <button class="button is-danger">رفض الطلب</button>
+        </nuxt-link>
       </div>
     </div>
   </div>

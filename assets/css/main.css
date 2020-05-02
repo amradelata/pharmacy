@@ -1,6 +1,10 @@
 body {
   font-family: 'Cairo', sans-serif;
-
+  background: #1d2c4d;
+  
+}
+.container{
+  width: 100vw !important;
 }
 .notification {
   text-align: center

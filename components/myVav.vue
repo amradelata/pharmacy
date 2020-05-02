@@ -125,4 +125,13 @@ export default {
   margin-right: auto;
   margin-left: 0;
 }
+.container.is-fluid {
+  padding: 0;
+}
+.navbar,
+#navbarphone {
+  padding-right: 35px;
+  padding-left: 35px;
+  background: #ffffff;
+}
 </style>
