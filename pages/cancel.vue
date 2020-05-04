@@ -22,7 +22,7 @@
         </div>
         <div class="item">
           <input type="checkbox" />
-          <span>المكان خارجنطاق التوصيل</span>
+          <span>المكان خارج نطاق التوصيل</span>
         </div>
         <div class="item">
           <input type="checkbox" />
@@ -46,7 +46,6 @@
 .cancel {
   text-align: center;
   color: aliceblue;
-  height: 120vh;
 }
 .radiocard {
   text-align: start;

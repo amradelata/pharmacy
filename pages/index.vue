@@ -30,6 +30,7 @@
             <span class="price">17,50 EGP</span>
           </div>
           <span class="qt">x1</span>
+          <br />
           <hr />
           <img src="~/assets/img/غسول.png" />
           <div class="contnt">
@@ -37,19 +38,23 @@
             <span class="price">50,75 EGP</span>
           </div>
           <span class="qt">x1</span>
+          <br />
           <hr />
           <span class="total">:المجموع</span>
           <span class="totalNumper">68.25</span>
         </div>
         <div class="card">
           <label>التعليقات المصوره والمكتوبه</label>
+          <br />
           <hr />
           <img src="~/assets/img/سيجنالتو.jpg" />
+          <br />
           <hr />
           <p class="discrpthintext">محتاج معجون اسنان سجنل تو او المسواك</p>
         </div>
         <div class="card">
           <label>توصيل الى</label>
+          <br />
           <hr />
           <p class="discrpthintext">16 شارع سعد زغلول</p>
         </div>
@@ -112,6 +117,7 @@ label {
 }
 .card img {
   width: 100px;
+  /* text-align: center; */
   /* display: inline-block; */
 }
 .contnt {
@@ -140,9 +146,9 @@ label {
 }
 .totalNumper {
   /* display: block; */
-  float: right;
+  float: left;
   font-weight: 900;
-  margin-right: 50px;
+  margin-left: 50px;
   color: #00a8ff;
 }
 .discrpthintext {
@@ -155,8 +161,8 @@ label {
   }
   .card {
     width: calc(100% - 20px);
-    text-align: center;
-    padding: 35px 50px 35px 0;
+    /* text-align: center; */
+    /* padding: 35px 50px 35px 0; */
   }
 
   label {

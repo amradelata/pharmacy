@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="cancel">
+    <div class="done">
       <p class="is-size-1 has-text-success refusetext">قبول الطلب</p>
       <p
         class="is-size-3 refusetextparagraph"
@@ -8,22 +8,13 @@
       <div class="radiocard">
         <label>بيانات الفاتورة</label>
         <hr />
-        <div class="item">
-          <img src="~/assets/img/stopwatch.png" class="img" />
-          <span class="spantext">مدة التوصيل</span>
-          <span class="spanNumper">30min</span>
-        </div>
-        <div class="item">
-          <img src="~/assets/img/cart.webp" class="img" />
+
+        <div class="myitem">
+          <!-- <img src="~/assets/img/cart.webp" class="img" /> -->
           <span class="spantext">تكلفة الطلب</span>
           <span class="spanNumper">00,00 EGP</span>
         </div>
-        <div class="item">
-          <img src="~/assets/img/Vespa.png" class="img" />
-          <span class="spantext">رسوم التوصيل</span>
-          <span class="spanNumper">00,00 EGP</span>
-        </div>
-        <hr />
+
         <div class="item">
           <span class="total">المجموع</span>
           <span class="totalNumper">00,00 EGP</span>
@@ -31,7 +22,7 @@
       </div>
       <div style="text-align: center;">
         <nuxt-link to="/done">
-          <button class="button is-light">تاكيد قبول الطلب</button>
+          <button class="button is-success">تاكيد قبول الطلب</button>
         </nuxt-link>
       </div>
     </div>
@@ -39,10 +30,9 @@
 </template>
 
 <style scoped>
-.cancel {
+.done {
   text-align: center;
   color: aliceblue;
-  /* height: 120vh; */
 }
 .radiocard {
   text-align: start;
@@ -57,7 +47,20 @@
   display: inline-block;
   box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22);
 }
-
+.myitem {
+  text-align: center !important;
+}
+.myitem .spanNumper {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.myitem .img {
+  width: 30px;
+  height: 30px;
+}
 .item {
   margin: 35px 0;
 }
@@ -81,7 +84,7 @@
   width: 30px;
   height: 30px;
 }
-.cancel button {
+.done button {
   width: 50%;
   margin-bottom: 20px;
 }
@@ -96,7 +99,7 @@
   .item .img {
     margin-left: 10px;
   }
-  .cancel button {
+  .done button {
     width: 95%;
     margin-bottom: 20px;
   }

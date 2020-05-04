@@ -8,9 +8,9 @@
       >متصل</button>
     </div>
 
-    <div class="notification is-primary" ref="primary">انت الان تسطاتيع استقبال الطلبات</div>
+    <div class="notification borderRadus is-primary" ref="primary">انت الان تسطاتيع استقبال الطلبات</div>
     <div
-      class="notification is-danger displayNone"
+      class="notification borderRadus is-danger displayNone"
       ref="danger"
     >انت غير متصل لن تتمكن من استقبال الطلبات</div>
   </div>
@@ -34,3 +34,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.borderRadus {
+  border-radius: 0 !important;
+}
+</style>
