@@ -5,6 +5,7 @@
         <nuxt-link to="/" class="navbar-item">
           <div class="is-size-3">صيدلية</div>
         </nuxt-link>
+
         <a
           role="button"
           class="navbar-burger burger"

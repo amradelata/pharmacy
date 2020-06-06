@@ -75,7 +75,6 @@
 <script>
 import notification from "~/components/notification.vue";
 import myVav from "~/components/myVav.vue";
-
 export default {
   components: {
     notification,
@@ -126,7 +125,6 @@ label {
 .contnt {
   display: inline-block;
 }
-
 .contnt .price {
   /* display: block; */
   color: #6c5ce7;
@@ -165,10 +163,8 @@ label {
     /* text-align: center; */
     /* padding: 35px 50px 35px 0; */
   }
-
   label {
     font-size: 20px;
   }
 }
 </style>
-

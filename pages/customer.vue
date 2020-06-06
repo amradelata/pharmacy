@@ -86,7 +86,6 @@ export default {
   methods: {
     async order(index) {
       const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
-
       const res = await axios.post(orderAPI, this.drugs[index]);
       // console.log(this.drugs[index])
       // this.posts.push(res.data)
@@ -140,7 +139,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-
 .card {
   flex-basis: calc(25% - 20px);
   display: inline-block;
@@ -161,7 +159,6 @@ export default {
   margin-top: 20px;
   color: #fff;
   background: #3298dc;
-
   /* padding: 0; */
   border-radius: 0 !important;
 }
