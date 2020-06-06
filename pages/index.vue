@@ -1,75 +1,12 @@
 <template>
-  <div>
-    <notification />
-    <!-- map -->
-    <div class="map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13913.965682582799!2d30.86137795!3d29.326590599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1580298588986!5m2!1sen!2seg"
-        width="100%"
-        height="100%"
-        frameborder="0"
-        style="border:0;"
-        allowfullscreen
-      ></iframe>
-    </div>
-    <!-- map -->
-
-    <!--  simulate-->
-    <div style="text-align: center; padding: 35px">
-      <button class="button is-warning" @click="youHaveOrder()">simulate i have order</button>
-    </div>
-
-    <div class="newOrder displayNone" ref="newOrder">
-      <div class="cards">
-        <div class="card">
-          <label>السلع المطلوبه</label>
-          <hr />
-          <img src="~/assets/img/غسول.png" />
-          <div class="contnt">
-            <p class="name">Listrine 2</p>
-            <span class="price">17,50 EGP</span>
-          </div>
-          <span class="qt">x1</span>
-          <br />
-          <hr />
-          <img src="~/assets/img/غسول.png" />
-          <div class="contnt">
-            <p class="name">Listrine</p>
-            <span class="price">50,75 EGP</span>
-          </div>
-          <span class="qt">x1</span>
-          <br />
-          <hr />
-          <span class="total">:المجموع</span>
-          <span class="totalNumper">68.25</span>
-        </div>
-        <div class="card">
-          <label>التعليقات المصوره والمكتوبه</label>
-          <br />
-          <hr />
-          <img src="~/assets/img/سيجنالتو.jpg" />
-          <br />
-          <hr />
-          <p class="discrpthintext">محتاج معجون اسنان سجنل تو او المسواك</p>
-        </div>
-        <div class="card">
-          <label>توصيل الى</label>
-          <br />
-          <hr />
-          <p class="discrpthintext">16 شارع سعد زغلول</p>
-        </div>
-      </div>
-      <div class="mybutton">
-        <nuxt-link to="/acceptinactive">
-          <button class="button is-success">قبول</button>
-        </nuxt-link>
-        <nuxt-link to="/cancel">
-          <button class="button is-danger">رفض الطلب</button>
-        </nuxt-link>
-      </div>
+  <div class="home">
+    <div class="hometext">
+      <p class="is-size-1">هل انت</p>
+      <div class="button is-large is-primary" to="/pharmacyowner" @click="useroner()">مالك صيدلية</div>
+      <span class="mideltext">او</span>
+      <div class="button is-large is-primary" @click="usercustomer()">مشترى</div>
     </div>
   </div>
-  <!--  simulate-->
 </template>
 <script>
 import notification from "~/components/notification.vue";
@@ -81,93 +18,46 @@ export default {
   methods: {
     youHaveOrder() {
       this.$refs["newOrder"].classList.toggle("displayNone");
+    },
+    usercustomer() {
+      localStorage.setItem("userstat", "customer");
+      this.$router.replace("/customer");
+    },
+    useroner() {
+      localStorage.setItem("userstat", "oner");
+      this.$router.replace("/pharmacyowner");
     }
   }
 };
 </script>
 
 <style scoped>
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-}
-.newOrder {
-  position: relative;
-  padding: 35px;
-}
-.newOrder .mybutton {
+.home {
   text-align: center;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 }
-.newOrder .mybutton button {
-  margin: 35px 0;
-  font-size: 20px;
-  width: 150px;
+.home p {
+  margin-bottom: 100px;
+  color: aliceblue;
 }
-.card {
-  direction: ltr;
-  padding: 35px;
-  width: calc(33.333% - 20px);
-  margin: 10px;
-  display: inline-block;
-  box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22);
+.mideltext {
+  font-size: 45px;
+  color: aliceblue;
+  margin: 0 35px;
 }
-label {
-  float: right;
-  font-size: 25px;
-}
-.card img {
-  width: 100px;
-  /* text-align: center; */
-  /* display: inline-block; */
-}
-.contnt {
-  display: inline-block;
-}
-.contnt .name {
-  /* display: inline-block; */
-}
-.contnt .price {
-  /* display: block; */
-  color: #6c5ce7;
-  font-weight: 900;
-}
-.qt {
-  /* display: block; */
-  float: right;
-  font-weight: 900;
-  /* margin-right: 50px; */
-  margin-top: 80px;
-}
-.total {
-  /* display: block; */
-  float: right;
-  font-weight: 900;
-  /* margin-right: 50px; */
-}
-.totalNumper {
-  /* display: block; */
-  float: left;
-  font-weight: 900;
-  margin-left: 50px;
-  color: #00a8ff;
-}
-.discrpthintext {
-  /* display: block; */
-  float: right;
+
+.hometext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 768px) {
-  .newOrder {
-    padding: 0;
-  }
-  .card {
-    width: calc(100% - 20px);
-    /* text-align: center; */
-    /* padding: 35px 50px 35px 0; */
-  }
-
-  label {
-    font-size: 20px;
+  .mideltext {
+    display: block;
+    margin: 35px;
   }
 }
 </style>
-

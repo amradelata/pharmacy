@@ -10,7 +10,6 @@
     </div>
     <!-- my app -->
     <div dir="rtl" lang="ar" ref="myApp" class="displayNone">
-      <myVav />
       <nuxt />
     </div>
   </div>
@@ -19,12 +18,17 @@
 <script>
 import myVav from "~/components/myVav.vue";
 export default {
+  data() {
+    return {
+      userstat: localStorage.getItem("userstat")
+    };
+  },
   components: {
     myVav
   },
   methods: {
     firstLoding() {
-      console.log(this.$refs["myApp"], this.$refs["splash"]);
+      // console.log(this.$refs["myApp"], this.$refs["splash"]);
       this.$refs["myApp"].style.display = "inline-block";
       this.$refs["splash"].style.display = "none";
     }
@@ -33,6 +37,14 @@ export default {
     setTimeout(() => {
       this.firstLoding();
     }, 1000);
+  },
+  created() {
+    // sheck if user state oner open to hem oner page and if user state customer open to hem customer page
+    if (this.userstat === "oner") {
+      this.$router.replace("/pharmacyowner");
+    } else {
+      this.$router.replace("/customer");
+    }
   }
 };
 </script>
