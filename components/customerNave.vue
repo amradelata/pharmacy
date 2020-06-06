@@ -5,7 +5,6 @@
         <nuxt-link to="/" class="navbar-item">
           <div class="is-size-3">صيدلية</div>
         </nuxt-link>
-
         <a
           role="button"
           class="navbar-burger burger"
@@ -39,7 +38,7 @@
 
           <nuxt-link to="/setings" class="navbar-item">
             <img src="~/assets/img/setings.svg" class="menuImg" />
-            اعدادات الصيدليه
+            اعدادات الحساب
           </nuxt-link>
 
           <nuxt-link to="/help" class="navbar-item">

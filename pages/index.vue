@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <div class="hometext">
+    <!-- <div class="hometext">
       <p class="is-size-1">هل انت</p>
       <div class="button is-large is-primary" to="/pharmacyowner" @click="useroner()">مالك صيدلية</div>
       <span class="mideltext">او</span>
       <div class="button is-large is-primary" @click="usercustomer()">مشترى</div>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
