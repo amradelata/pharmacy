@@ -16,29 +16,25 @@
     <!-- map -->
 
     <!--  simulate-->
-    <div style="text-align: center; padding: 35px">
+    <!-- <div style="text-align: center; padding: 35px">
       <button class="button is-warning" @click="youHaveOrder()">simulate i have order</button>
-    </div>
+    </div>-->
 
-    <div class="newOrder displayNone" ref="newOrder">
+    <!-- displayNone -->
+    <div class="newOrder" ref="newOrder" v-for="item in orders" :key="item.id">
       <div class="cards">
         <div class="card">
           <label>السلع المطلوبه</label>
           <hr />
-          <img src="~/assets/img/غسول.png" />
+          <!-- <img src="~/assets/img/غسول.png" /> -->
           <div class="contnt">
-            <p class="name">Listrine 2</p>
-            <span class="price">17,50 EGP</span>
+            <p class="name">{{item.tradename}}</p>
+            <span class="price">{{item.price}} EGP</span>
           </div>
           <span class="qt">x1</span>
           <br />
           <hr />
-          <img src="~/assets/img/غسول.png" />
-          <div class="contnt">
-            <p class="name">Listrine</p>
-            <span class="price">50,75 EGP</span>
-          </div>
-          <span class="qt">x1</span>
+
           <br />
           <hr />
           <span class="total">:المجموع</span>
@@ -48,7 +44,7 @@
           <label>التعليقات المصوره والمكتوبه</label>
           <br />
           <hr />
-          <img src="~/assets/img/سيجنالتو.jpg" />
+          <!-- <img src="~/assets/img/سيجنالتو.jpg" /> -->
           <br />
           <hr />
           <p class="discrpthintext">محتاج معجون اسنان سجنل تو او المسواك</p>
@@ -75,7 +71,14 @@
 <script>
 import notification from "~/components/notification.vue";
 import myVav from "~/components/myVav.vue";
+import Axios from "axios";
+
 export default {
+  data() {
+    return {
+      orders: []
+    };
+  },
   components: {
     notification,
     myVav
@@ -84,6 +87,12 @@ export default {
     youHaveOrder() {
       this.$refs["newOrder"].classList.toggle("displayNone");
     }
+  },
+  async created() {
+    const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
+    const res = await Axios.get(orderAPI);
+    this.orders = res.data;
+    // console.log(res.data);
   }
 };
 </script>

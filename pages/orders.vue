@@ -1,52 +1,60 @@
 <template>
-  <div class="orders">
-    <div class="cards">
-      <div class="card">
-        <label>السلع المطلوبه</label>
-        <hr />
-        <img src="~/assets/img/غسول.png" />
-        <div class="contnt">
-          <p class="name">Listrine 2</p>
-          <span class="price">17,50 EGP</span>
+  <div>
+    <myVav />
+    <div class="orders">
+      <div class="cards">
+        <div class="card">
+          <label>السلع المطلوبه</label>
+          <hr />
+          <img src="~/assets/img/غسول.png" />
+          <div class="contnt">
+            <p class="name">Listrine 2</p>
+            <span class="price">17,50 EGP</span>
+          </div>
+          <span class="qt">x1</span>
+          <br />
+          <hr />
+          <img src="~/assets/img/غسول.png" />
+          <div class="contnt">
+            <p class="name">Listrine</p>
+            <span class="price">50,75 EGP</span>
+          </div>
+          <span class="qt">x1</span>
+          <br />
+          <hr />
+          <span class="total">:المجموع</span>
+          <span class="totalNumper">68.25</span>
         </div>
-        <span class="qt">x1</span>
-        <br />
-        <hr />
-        <img src="~/assets/img/غسول.png" />
-        <div class="contnt">
-          <p class="name">Listrine</p>
-          <span class="price">50,75 EGP</span>
+        <div class="card">
+          <label>التعليقات المصوره والمكتوبه</label>
+          <br />
+          <hr />
+          <img src="~/assets/img/سيجنالتو.jpg" />
+          <br />
+          <hr />
+          <p class="discrpthintext">محتاج معجون اسنان سجنل تو او المسواك</p>
         </div>
-        <span class="qt">x1</span>
-        <br />
-        <hr />
-        <span class="total">:المجموع</span>
-        <span class="totalNumper">68.25</span>
-      </div>
-      <div class="card">
-        <label>التعليقات المصوره والمكتوبه</label>
-        <br />
-        <hr />
-        <img src="~/assets/img/سيجنالتو.jpg" />
-        <br />
-        <hr />
-        <p class="discrpthintext">محتاج معجون اسنان سجنل تو او المسواك</p>
-      </div>
-      <div class="card">
-        <label>توصيل الى</label>
-        <br />
-        <hr />
-        <p class="discrpthintext">16 شارع سعد زغلول</p>
+        <div class="card">
+          <label>توصيل الى</label>
+          <br />
+          <hr />
+          <p class="discrpthintext">16 شارع سعد زغلول</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
+<script>
+import myVav from "~/components/myVav.vue";
 
+export default {
+  components: {
+    myVav
+  }
+};
+</script>
 <style scoped>
-.orders {
-  /* height: 120vh; */
-}
 .cards {
   display: flex;
   flex-wrap: wrap;

@@ -8,7 +8,7 @@ export default {
   },
   mounted() {
     if (this.userstat === null) {
-      this.$router.replace("/help");
+      this.$router.replace("/signIn");
     } else if (this.userstat === "customer") {
       this.$router.replace("/customer");
     } else if (this.userstat === "oner") {

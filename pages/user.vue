@@ -1,38 +1,50 @@
 <template>
-  <div class="container">
-    <div class="setingsuser">
-      <div class="head">
-        <span class="itemright">الحساب</span>
-        <button class="itemleft button is-rounded">حفظ</button>
-      </div>
-      <div class="suphead">
-        <span>بيانات الخصوصية</span>
-      </div>
-      <div class="item">
-        <div class="itemright">الاسم</div>
-        <div class="itemleft">Amr Adel Ata</div>
-      </div>
-      <div class="item">
-        <div class="itemright">الرقم الهاتف</div>
-        <div class="itemleft">90010</div>
-      </div>
+  <div>
+    <myVav />
+    <div class="container">
+      <div class="setingsuser">
+        <div class="head">
+          <span class="itemright">الحساب</span>
+          <button class="itemleft button is-rounded">حفظ</button>
+        </div>
+        <div class="suphead">
+          <span>بيانات الخصوصية</span>
+        </div>
+        <div class="item">
+          <div class="itemright">الاسم</div>
+          <div class="itemleft">Amr Adel Ata</div>
+        </div>
+        <div class="item">
+          <div class="itemright">الرقم الهاتف</div>
+          <div class="itemleft">90010</div>
+        </div>
 
-      <div class="item">
-        <div class="itemright">البريد</div>
-        <div class="itemleft">amradelata@gmail.com</div>
-      </div>
-      <div class="item">
-        <div class="itemright">تعديل كلمة السر</div>
-        <div class="itemleft">></div>
-      </div>
-      <div style="text-align: center; padding: 100px 20px">
-        <nuxt-link to="/cancel">
-          <button class="button is-light" style="width: 100%">نسجيل الخروج</button>
-        </nuxt-link>
+        <div class="item">
+          <div class="itemright">البريد</div>
+          <div class="itemleft">amradelata@gmail.com</div>
+        </div>
+        <div class="item">
+          <div class="itemright">تعديل كلمة السر</div>
+          <div class="itemleft">></div>
+        </div>
+        <div style="text-align: center; padding: 100px 20px">
+          <nuxt-link to="/cancel">
+            <button class="button is-light" style="width: 100%">نسجيل الخروج</button>
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
+<script>
+import myVav from "~/components/myVav.vue";
+
+export default {
+  components: {
+    myVav
+  }
+};
+</script>
 
 <style scoped>
 .head {
