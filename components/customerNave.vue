@@ -37,11 +37,6 @@
             الحساب
           </nuxt-link>
 
-          <nuxt-link to="/setings" class="navbar-item">
-            <img src="~/assets/img/setings.svg" class="menuImg" />
-            اعدادات الحساب
-          </nuxt-link>
-
           <nuxt-link to="/help" class="navbar-item">
             <img src="~/assets/img/help.svg" class="menuImg" />
             المساعده
@@ -80,11 +75,6 @@
         <nuxt-link to="/user" class="navbar-item">
           <img src="~/assets/img/user.svg" class="menuImg" />
           الحساب
-        </nuxt-link>
-
-        <nuxt-link to="/setings" class="navbar-item">
-          <img src="~/assets/img/setings.svg" class="menuImg" />
-          اعدادات الصيدليه
         </nuxt-link>
 
         <nuxt-link to="/help" class="navbar-item">

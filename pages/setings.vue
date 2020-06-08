@@ -28,8 +28,8 @@
           <span>عنوان الفرع</span>
         </div>
         <div class="item">
-          <div class="itemright">{{pharmsyInformation.city}}</div>
-          <div class="itemleft">القاهره</div>
+          <div class="itemright">المدينة</div>
+          <div class="itemleft">{{pharmsyInformation.city}}</div>
         </div>
         <div class="item">
           <div class="itemright">المنطقة</div>
