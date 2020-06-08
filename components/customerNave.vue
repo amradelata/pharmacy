@@ -47,7 +47,7 @@
             المساعده
           </nuxt-link>
 
-          <nuxt-link to="/orders" class="navbar-item">
+          <nuxt-link to="/logOut" class="navbar-item">
             <img src="~/assets/img/logout.svg" class="menuImg" />
             تسجيل الخروج
           </nuxt-link>
@@ -92,7 +92,7 @@
           المساعده
         </nuxt-link>
 
-        <nuxt-link to="/" class="navbar-item">
+        <nuxt-link to="/logOut" class="navbar-item">
           <img src="~/assets/img/logout.svg" class="menuImg" />
           تسجيل الخروج
         </nuxt-link>

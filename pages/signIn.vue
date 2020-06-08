@@ -65,17 +65,19 @@ export default {
       password: "",
       email: "",
       lastName: "",
-      firstName: ""
+      firstName: "",
+      userstat: ""
     };
   },
   methods: {
     usercustomer() {
-      localStorage.setItem("userstat", "oner");
-      //   this.$router.replace("/customer");
+      this.userstat = "oner";
+
+      console.log(this.userstat);
     },
     useroner() {
-      localStorage.setItem("userstat", "customer");
-      //   this.$router.replace("/pharmacyowner");
+      this.userstat = "customer";
+      console.log(this.userstat);
     },
     async submit() {
       const nameres = await axios.get(
@@ -89,7 +91,8 @@ export default {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
-        password: this.password
+        password: this.password,
+        userstat: this.userstat
       });
 
       localStorage.setItem("status", "loggedIn");
@@ -97,6 +100,8 @@ export default {
       localStorage.setItem("userlastName", this.lastName);
       localStorage.setItem("useremail", this.email);
       localStorage.setItem("userpassword", this.password);
+      localStorage.setItem("userstat", this.userstat);
+
       const useracount = localStorage.getItem("userstat");
       if (useracount == "customer") {
         this.$router.replace("/customer");
