@@ -16,6 +16,25 @@
             <input
               class="input is-primary"
               type="text"
+              placeholder="الاسم "
+              v-model="firstUserName"
+            />
+            <input
+              class="input is-primary"
+              type="text"
+              placeholder="هاتف المستخدم"
+              v-model="userphone"
+            />
+            <input
+              class="input is-primary"
+              type="text"
+              placeholder="الرقم السرى"
+              v-model="password"
+            />
+
+            <input
+              class="input is-primary"
+              type="text"
               placeholder="اسم الصيدلية"
               v-model="pharmacyName"
             />
@@ -94,10 +113,14 @@
 <script>
 import axios from "axios";
 const pharmacyInformation =
-  "https://pharmacy-databeas.herokuapp.com/pharmacy-Information";
+  "https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information";
 export default {
   data() {
     return {
+      firstUserName: "",
+      userphone: "",
+      email: "",
+      password: "",
       pharmacyName: "",
       pharmacyhotligh: "",
       pharmacycity: "",
@@ -121,25 +144,30 @@ export default {
     // },
     async submit() {
       const mypharmacyName = await axios.get(
-        `https://pharmacy-databeas.herokuapp.com/pharmacy-Information/?name=${this.pharmacyName}`
+        `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/?firstUserName=${this.firstUserName}`
       );
       if (mypharmacyName.data.length > 0) {
-        alert(" اسم الصيدلية موجود بالفعل ");
+        alert("هذا الاسم موجود بالفعل ");
         return;
       }
       const res = await axios.post(pharmacyInformation, {
-        name: this.pharmacyName,
-        hotligh: this.pharmacyhotligh,
+        firstUserName: this.firstUserName,
+        email: this.email,
+        password: this.password,
+        userphone: this.userphone,
+        pharmacyName: this.pharmacyName,
+        pharmacyhotligh: this.pharmacyhotligh,
         city: this.pharmacycity,
         region: this.pharmacyregion,
         street: this.pharmacystreet,
         buildingNumber: this.pharmacybuildingNumber,
         breadthOfTheConnectionSpace: this.pharmacybreadthOfTheConnectionSpace,
+        userstat: "oner",
         Latitude: this.pharmacyLongitude,
         Longitude: this.pharmacyLatitude
       });
       console.log(res);
-      localStorage.setItem("myPharmacyName", this.pharmacyName);
+      localStorage.setItem("userstat", "oner");
       // localStorage.setItem("userfirstName", this.firstName);
       // localStorage.setItem("userlastName", this.lastName);
       // localStorage.setItem("useremail", this.email);

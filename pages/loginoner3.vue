@@ -6,13 +6,6 @@
         <!-- inptus -->
         <div class="field">
           <div class="control">
-            <nuxt-link to="/logIn">
-              <button class="button is-primary is-outlined">تسجيل الدخول</button>
-            </nuxt-link>
-
-            <nuxt-link to="/signIn">
-              <button class="button is-primary is-outlined">حساب جديد</button>
-            </nuxt-link>
             <input class="input is-primary" type="text" placeholder="اسمك" v-model="firstName" />
 
             <input
@@ -40,7 +33,8 @@
 
 <script>
 import axios from "axios";
-const usersArray = "https://pharmacy-databeas.herokuapp.com/user-information";
+const usersArray =
+  "https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information";
 export default {
   data() {
     return {
@@ -55,10 +49,10 @@ export default {
       localStorage.setItem("userfirstName", this.firstName);
       localStorage.setItem("myPharmacyName", this.pharmacyName);
       const nameres = await axios.get(
-        `https://pharmacy-databeas.herokuapp.com/user-information/?firstName=${this.firstName}`
+        `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/?firstUserName=${this.firstName}`
       );
       const basswordres = await axios.get(
-        `https://pharmacy-databeas.herokuapp.com/user-information/?password=${this.password}`
+        `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/?password=${this.password}`
       );
       console.log(nameres.data, basswordres.data);
       if (nameres.data.length > 0 && basswordres.data.length > 0) {

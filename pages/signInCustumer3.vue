@@ -6,17 +6,33 @@
         <!-- inptus -->
         <div class="field">
           <div class="control">
+            <input class="input is-primary" type="text" placeholder="الاسم" v-model="name" />
+            <input class="input is-primary" type="text" placeholder="الايميل" v-model="email" />
+
             <input
               class="input is-primary"
               type="text"
-              placeholder="خطوط الطول- موقعك"
-              v-model="pharmacyLongitude"
+              placeholder="الرقم السرى"
+              v-model="password"
             />
+            <input
+              class="input is-primary"
+              type="text"
+              placeholder="رقم الهاتف"
+              v-model="userphone"
+            />
+
             <input
               class="input is-primary"
               type="text"
               placeholder="حطوط العرض- موقعك"
               v-model="pharmacyLatitude"
+            />
+            <input
+              class="input is-primary"
+              type="text"
+              placeholder="خطوط الطول- موقعك"
+              v-model="pharmacyLongitude"
             />
 
             <button class="button is-primary" @click="submit()">تسجيل الدخول</button>
@@ -31,10 +47,15 @@
 
 <script>
 import axios from "axios";
-const usersArray = "https://pharmacy-databeas.herokuapp.com/user-information";
+const usersArray =
+  "https://pharmacy-databeas.herokuapp.com/userCustomer-information";
 export default {
   data() {
     return {
+      userphone: "",
+      password: "",
+      email: "",
+      name: "",
       pharmacyLongitude: "",
       pharmacyLatitude: ""
     };
@@ -42,21 +63,25 @@ export default {
   methods: {
     async submit() {
       const nameres = await axios.get(
-        `https://pharmacy-databeas.herokuapp.com/user-information/?firstName=${this.firstName}`
+        `https://pharmacy-databeas.herokuapp.com/userCustomer-information/?firstName=${this.name}`
       );
       if (nameres.data.length > 0) {
         alert("هذا الاسم موجود بالفعل ");
         return;
       }
       const res = await axios.post(usersArray, {
-        firstName: this.firstName,
+        name: this.name,
         lastName: this.lastName,
         email: this.email,
         password: this.password,
-        userstat: this.userstat
+        userphone: this.userphone,
+        userstat: this.userstat,
+        userstat: "customer",
+        Latitude: this.pharmacyLatitude,
+        Longitude: this.pharmacyLongitude
       });
 
-      //   localStorage.setItem("status", "loggedIn");
+      localStorage.setItem("userstat", "customer");
       //   localStorage.setItem("userfirstName", this.firstName);
       //   localStorage.setItem("userlastName", this.lastName);
       //   localStorage.setItem("useremail", this.email);

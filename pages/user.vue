@@ -14,15 +14,15 @@
           <div class="itemright">الاسم</div>
           <div class="itemleft">{{userInformation.firstName}}</div>
         </div>
-        <div class="item">
+        <!-- <div class="item">
           <div class="itemright">الرقم الهاتف</div>
-          <div class="itemleft">90010</div>
-        </div>
+          <div class="itemleft">{{userInformation.userphone}}</div>
+        </div>-->
 
         <div class="item">
           <div @click="showeditLastname()" class="items">
-            <div class="itemright">اسم العائلة</div>
-            <div class="itemleft">{{userInformation.lastName}}</div>
+            <div class="itemright">الرقم الهاتف</div>
+            <div class="itemleft">{{userInformation.userphone}}</div>
           </div>
 
           <div class="edit" ref="lastnameedit">
@@ -31,8 +31,8 @@
             <input
               class="itemleft input is-info asd"
               type="text"
-              :value="userInformation.lastName"
-              ref="lastnameemailinput"
+              :value="userInformation.userphone"
+              ref="userphoneinput"
             />
           </div>
         </div>
@@ -87,7 +87,8 @@
 <script>
 import myVav from "~/components/myVav.vue";
 import axios from "axios";
-const usersArray = "https://pharmacy-databeas.herokuapp.com/user-information";
+const usersArray =
+  "https://pharmacy-databeas.herokuapp.com/userCustomer-information";
 export default {
   components: {
     myVav
@@ -101,17 +102,17 @@ export default {
   methods: {
     async seave() {
       const emailinputvalue = this.$refs["emailinput"].value;
-      const lastnameemailinput = this.$refs["lastnameemailinput"].value;
+      const userphoneinput = this.$refs["userphoneinput"].value;
       const passwordinput = this.$refs["passwordinput"].value;
       let id = this.userInformation.id;
       console.log(id);
 
       const res = await axios.patch(
-        `https://pharmacy-databeas.herokuapp.com/user-information/${id}`,
+        `https://pharmacy-databeas.herokuapp.com/userCustomer-information/${id}`,
         {
           email: emailinputvalue,
-          lastName: lastnameemailinput,
-          password: passwordinput
+          password: passwordinput,
+          userphone: userphoneinput
         }
       );
       this.$router.go();
@@ -120,7 +121,7 @@ export default {
     },
     logout() {
       window.localStorage.clear();
-      this.$router.replace("/logIn");
+      this.$router.replace("/");
     },
     showeditEmail() {
       this.$refs["edit"].classList.toggle("edit");
@@ -134,7 +135,7 @@ export default {
   },
   async created() {
     const res = await axios.get(
-      `https://pharmacy-databeas.herokuapp.com/user-information/?firstName=${this.myuser}`
+      `https://pharmacy-databeas.herokuapp.com/userCustomer-information/?firstName=${this.myuser}`
     );
     this.userInformation = res.data[0];
     console.log(res.data[0]);

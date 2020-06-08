@@ -6,14 +6,19 @@
         <!-- inptus -->
         <div class="field">
           <div class="control">
-            <nuxt-link to="/logIn">
-              <button class="button is-primary is-outlined">تسجيل الدخول</button>
+            <!--putons  -->
+            <p class="is-size-1">هل تريد</p>
+            <nuxt-link to="/typelogin">
+              <button class="button is-large is-primary">تسجيل الدخول</button>
+            </nuxt-link>
+            <span class="mideltext">او</span>
+            <nuxt-link to="/typesignin">
+              <button class="button is-large is-primary">حساب جديد</button>
             </nuxt-link>
 
-            <nuxt-link to="/signIn">
-              <button class="button is-primary is-outlined">حساب جديد</button>
-            </nuxt-link>
-            <input class="input is-primary" type="text" placeholder="اسمك" v-model="firstName" />
+            <!-- putons -->
+            <!-- inputs -->
+            <!-- <input class="input is-primary" type="text" placeholder="اسمك" v-model="firstName" />
             <input
               class="input is-primary"
               type="text"
@@ -31,10 +36,10 @@
               type="text"
               placeholder="البريد الالكترونى"
               v-model="email"
-            />
-
-            <!--  -->
-            <div class="control">
+            />-->
+            <!-- inputs -->
+            <!--acunt tayp  -->
+            <!-- <div class="control">
               <p>نوع الحساب</p>
               <label class="radio">
                 <input type="radio" name="foobar" @click="useroner()" />
@@ -44,9 +49,10 @@
                 <input type="radio" name="foobar" @click="usercustomer()" />
                 <p class="is-size-6">مالك صيدلية</p>
               </label>
-            </div>
-            <!--  -->
-            <button class="button is-primary" @click="submit()">التالى</button>
+            </div>-->
+            <!-- acunt tayp -->
+            <!-- <br />
+            <button class="button is-primary" @click="submit()">التالى</button>-->
           </div>
         </div>
 

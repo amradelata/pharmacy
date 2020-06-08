@@ -22,7 +22,7 @@ export default {
   methods: {
     logout() {
       window.localStorage.clear();
-      this.$router.replace("/logIn");
+      this.$router.replace("/");
     }
   }
 };

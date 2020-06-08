@@ -14,17 +14,23 @@ export default {
     };
   },
   async mounted() {
-    const nameres = await axios.get(
-      `https://pharmacy-databeas.herokuapp.com/user-information/?firstName=${this.myFirstNmae}`
+    const nameCustomerres = await axios.get(
+      `https://pharmacy-databeas.herokuapp.com/userCustomer-information/?firstName=${this.myFirstNmae}`
     );
-    if (nameres.data.length <= 0) {
+    const nameresOner = await axios.get(
+      `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/?firstUserName=${this.myFirstNmae}`
+    );
+    if (nameCustomerres.data.length <= 0 && nameresOner.data.length <= 0) {
       this.$router.replace("/signIn");
     } else if (
-      nameres.data.length > 0 &&
-      nameres.data[0].userstat === "customer"
+      nameCustomerres.data.length > 0 &&
+      nameCustomerres.data[0].userstat === "customer"
     ) {
       this.$router.replace("/customer");
-    } else if (nameres.data.length > 0 && nameres.data[0].userstat === "oner") {
+    } else if (
+      nameresOner.data.length > 0 &&
+      nameresOner.data[0].userstat === "oner"
+    ) {
       this.$router.replace("/pharmacyowner");
     }
     // console.log(this.$refs["oner"], this.$refs["custumer"]);
