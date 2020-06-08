@@ -12,25 +12,30 @@
         </div>
         <div class="item">
           <div class="itemright">الاسم</div>
-          <div class="itemleft">Amr Adel Ata</div>
+          <div class="itemleft">{{userInformation.firstName}}</div>
         </div>
         <div class="item">
           <div class="itemright">الرقم الهاتف</div>
           <div class="itemleft">90010</div>
         </div>
-
+        <div class="item">
+          <div class="itemright">اسم العائلة</div>
+          <div class="itemleft">{{userInformation.lastName}}</div>
+        </div>
         <div class="item">
           <div class="itemright">البريد</div>
-          <div class="itemleft">amradelata@gmail.com</div>
+          <div class="itemleft">{{userInformation.email}}</div>
+        </div>
+        <div class="item">
+          <div class="itemright">نوع الحساب</div>
+          <div class="itemleft">{{userInformation.userstat}}</div>
         </div>
         <div class="item">
           <div class="itemright">تعديل كلمة السر</div>
-          <div class="itemleft">></div>
+          <div class="itemleft">{{userInformation.password}}</div>
         </div>
         <div style="text-align: center; padding: 100px 20px">
-          <nuxt-link to="/cancel">
-            <button class="button is-light" style="width: 100%">نسجيل الخروج</button>
-          </nuxt-link>
+          <button class="button is-light" style="width: 100%" @click="logout()">نسجيل الخروج</button>
         </div>
       </div>
     </div>
@@ -38,10 +43,31 @@
 </template>
 <script>
 import myVav from "~/components/myVav.vue";
-
+import axios from "axios";
+const usersArray = "https://pharmacy-databeas.herokuapp.com/user-information";
 export default {
   components: {
     myVav
+  },
+  data() {
+    return {
+      myuser: localStorage.getItem("userfirstName"),
+      userInformation: []
+    };
+  },
+  methods: {
+    logout() {
+      window.localStorage.clear();
+      this.$router.replace("/logIn");
+    }
+  },
+  async created() {
+    const res = await axios.get(
+      `https://pharmacy-databeas.herokuapp.com/user-information/?firstName=${this.myuser}`
+    );
+    this.userInformation = res.data[0];
+    console.log(res.data[0]);
+    console.log(this.myuser);
   }
 };
 </script>

@@ -52,6 +52,7 @@ export default {
     return {
       drugs: [],
       search: "",
+      // my fake phrmsy data
       pharmsylocation: [
         { Latitude: "30.039358", Longitude: "31.233043", name: "egypt" },
         { Latitude: "26.817136", Longitude: "36.571405", name: "ksa" },
@@ -65,6 +66,7 @@ export default {
     };
   },
   async created() {
+    // show deug data
     const res = await axios.get(API);
     this.drugs = res.data;
     this.drugs = this.drugs.slice(0, 25);
@@ -72,6 +74,7 @@ export default {
   },
   computed: {
     myresolts() {
+      // search
       if (this.search) {
         return this.drugs.filter(item => {
           return item.tradename
@@ -97,6 +100,7 @@ export default {
         text: "توقع ان يتم التوصيل فى نصف ساعة "
       });
     },
+    // get your location
     getyourLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.showPosition);

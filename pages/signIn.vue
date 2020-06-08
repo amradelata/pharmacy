@@ -46,7 +46,7 @@
               </label>
             </div>
             <!--  -->
-            <button class="button is-primary" @click="submit()">حساب جديد</button>
+            <button class="button is-primary" @click="submit()">التالى</button>
           </div>
         </div>
 
@@ -106,7 +106,7 @@ export default {
       if (useracount == "customer") {
         this.$router.replace("/customer");
       } else if (useracount == "oner") {
-        this.$router.replace("/pharmacyowner");
+        this.$router.replace("/signInOner2");
       }
     }
   }
@@ -114,6 +114,9 @@ export default {
 </script>
 
 <style  scoped>
+.control {
+  text-align: center;
+}
 .home {
   text-align: center;
   position: relative;

@@ -18,38 +18,46 @@
         </div>
         <div class="item">
           <div class="itemright">اسم الصيدليه</div>
-          <div class="itemleft">El zreher</div>
+          <div class="itemleft">{{pharmsyInformation.name}}</div>
         </div>
         <div class="item">
           <div class="itemright">الرقم الساخن</div>
-          <div class="itemleft">90010</div>
+          <div class="itemleft">{{pharmsyInformation.hotligh}}</div>
         </div>
         <div class="suphead">
           <span>عنوان الفرع</span>
         </div>
         <div class="item">
-          <div class="itemright">المدينه</div>
+          <div class="itemright">{{pharmsyInformation.city}}</div>
           <div class="itemleft">القاهره</div>
         </div>
         <div class="item">
           <div class="itemright">المنطقة</div>
-          <div class="itemleft">وسط البلد</div>
+          <div class="itemleft">{{pharmsyInformation.region}}</div>
         </div>
         <div class="item">
           <div class="itemright">الشارع</div>
-          <div class="itemleft">محمد على</div>
+          <div class="itemleft">{{pharmsyInformation.street}}</div>
         </div>
         <div class="item">
           <div class="itemright">رقم المبنى</div>
-          <div class="itemleft">16</div>
+          <div class="itemleft">{{pharmsyInformation.buildingNumber}}</div>
         </div>
         <div class="item">
           <div class="itemright">اتساع مساحه التوصيل</div>
-          <div class="itemleft">3 كيلو</div>
+          <div class="itemleft">{{pharmsyInformation.breadthOfTheConnectionSpace + ' كيلو'}}</div>
         </div>
-        <div class="item">
+        <!-- <div class="item">
           <div class="itemright">موقعك</div>
           <div class="itemleft">19°56’56.96″S 69°38’1.83″W</div>
+        </div>-->
+        <div class="item">
+          <div class="itemright">خطوط الطول</div>
+          <div class="itemleft">{{pharmsyInformation.Latitude}}</div>
+        </div>
+        <div class="item">
+          <div class="itemright">حطوط العرض</div>
+          <div class="itemleft">{{pharmsyInformation.Longitude}}</div>
         </div>
       </div>
     </div>
@@ -58,10 +66,29 @@
 
 <script>
 import myVav from "~/components/myVav.vue";
+import axios from "axios";
+const userpharmsylocation =
+  "https://pharmacy-databeas.herokuapp.com/pharmacy-Information";
 
 export default {
   components: {
     myVav
+  },
+  data() {
+    return {
+      pharmsyInformation: [],
+      pharmacyName: localStorage.getItem("myPharmacyName")
+    };
+  },
+
+  async created() {
+    // search in all pharmacy with this pharmacy name
+    const res = await axios.get(
+      `https://pharmacy-databeas.herokuapp.com/pharmacy-Information/?name=${this.pharmacyName}`
+    );
+    this.pharmsyInformation = res.data[0];
+    console.log(res.data[0]);
+    console.log(this.myuser);
   }
 };
 </script>

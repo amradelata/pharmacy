@@ -6,26 +6,17 @@
         <!-- inptus -->
         <div class="field">
           <div class="control">
-            <nuxt-link to="/logIn">
-              <button class="button is-primary is-outlined">تسجيل الدخول</button>
-            </nuxt-link>
-
-            <nuxt-link to="/signIn">
-              <button class="button is-primary is-outlined">حساب جديد</button>
-            </nuxt-link>
-            <input class="input is-primary" type="text" placeholder="اسمك" v-model="firstName" />
-
             <input
               class="input is-primary"
               type="text"
-              placeholder="الرقم السرى"
-              v-model="password"
+              placeholder="خطوط الطول- موقعك"
+              v-model="pharmacyLongitude"
             />
             <input
               class="input is-primary"
               type="text"
-              placeholder="اسم الصيدليه  اذا كنت صاحب الصيدليه فقط"
-              v-model="pharmacyName"
+              placeholder="حطوط العرض- موقعك"
+              v-model="pharmacyLatitude"
             />
 
             <button class="button is-primary" @click="submit()">تسجيل الدخول</button>
@@ -44,27 +35,39 @@ const usersArray = "https://pharmacy-databeas.herokuapp.com/user-information";
 export default {
   data() {
     return {
-      password: "",
-      firstName: "",
-      pharmacyName: ""
+      pharmacyLongitude: "",
+      pharmacyLatitude: ""
     };
   },
   methods: {
     async submit() {
-      localStorage.setItem("userpassword", this.password);
-      localStorage.setItem("userfirstName", this.firstName);
-      localStorage.setItem("myPharmacyName", this.pharmacyName);
       const nameres = await axios.get(
         `https://pharmacy-databeas.herokuapp.com/user-information/?firstName=${this.firstName}`
       );
-      const basswordres = await axios.get(
-        `https://pharmacy-databeas.herokuapp.com/user-information/?password=${this.password}`
-      );
-      console.log(nameres.data, basswordres.data);
-      if (nameres.data.length > 0 && basswordres.data.length > 0) {
-        this.$router.replace("/");
-      } else {
-        alert("الرقم السرى  او اسم المستخدم خطأ");
+      if (nameres.data.length > 0) {
+        alert("هذا الاسم موجود بالفعل ");
+        return;
+      }
+      const res = await axios.post(usersArray, {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+        userstat: this.userstat
+      });
+
+      //   localStorage.setItem("status", "loggedIn");
+      //   localStorage.setItem("userfirstName", this.firstName);
+      //   localStorage.setItem("userlastName", this.lastName);
+      //   localStorage.setItem("useremail", this.email);
+      //   localStorage.setItem("userpassword", this.password);
+      //   localStorage.setItem("userstat", this.userstat);
+
+      const useracount = localStorage.getItem("userstat");
+      if (useracount == "customer") {
+        this.$router.replace("/customer");
+      } else if (useracount == "oner") {
+        this.$router.replace("/pharmacyowner");
       }
     }
   }
