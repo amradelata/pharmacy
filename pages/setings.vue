@@ -5,7 +5,7 @@
       <div class="setings">
         <div class="head">
           <span class="itemright">اعدادات الصفحه</span>
-          <button class="itemleft button is-rounded">حفظ</button>
+          <button class="itemleft button is-rounded" @click="seave()">حفظ</button>
         </div>
         <div class="suphead">
           <span>بيانات الصيدليه</span>
@@ -18,39 +18,144 @@
         </div>
         <div class="item">
           <div class="itemright">اسم الصيدليه</div>
-          <div class="itemleft">{{pharmsyInformation.name}}</div>
+          <div class="itemleft">{{pharmsyInformation.pharmacyName}}</div>
         </div>
+        <!--  -->
+
+        <!-- <div class="item">
+          <div class="itemright">الرقم الصيدلية</div>
+          <div class="itemleft">{{pharmsyInformation.pharmacyhotligh}}</div>
+        </div>-->
+
+        <!--  -->
         <div class="item">
-          <div class="itemright">الرقم الساخن</div>
-          <div class="itemleft">{{pharmsyInformation.hotligh}}</div>
+          <div @click="showeditpharmacyhotligh()" class="items">
+            <div class="itemright">الرقم الصيدلية</div>
+            <div class="itemleft">{{pharmsyInformation.pharmacyhotligh}}</div>
+          </div>
+
+          <div class="edit" ref="editpharmacyhotligh">
+            <div class="itemright"></div>
+
+            <input
+              class="itemleft input is-info asd"
+              type="text"
+              :value="pharmsyInformation.pharmacyhotligh"
+              ref="pharmacyhotlighinput"
+            />
+          </div>
         </div>
         <div class="suphead">
           <span>عنوان الفرع</span>
         </div>
-        <div class="item">
+        <!-- <div class="item">
           <div class="itemright">المدينة</div>
           <div class="itemleft">{{pharmsyInformation.city}}</div>
-        </div>
+        </div>-->
+
         <div class="item">
-          <div class="itemright">المنطقة</div>
-          <div class="itemleft">{{pharmsyInformation.region}}</div>
-        </div>
-        <div class="item">
-          <div class="itemright">الشارع</div>
-          <div class="itemleft">{{pharmsyInformation.street}}</div>
-        </div>
-        <div class="item">
-          <div class="itemright">رقم المبنى</div>
-          <div class="itemleft">{{pharmsyInformation.buildingNumber}}</div>
-        </div>
-        <div class="item">
-          <div class="itemright">اتساع مساحه التوصيل</div>
-          <div class="itemleft">{{pharmsyInformation.breadthOfTheConnectionSpace + ' كيلو'}}</div>
+          <div @click="showeditpharmacycity()" class="items">
+            <div class="itemright">المدينة</div>
+            <div class="itemleft">{{pharmsyInformation.city}}</div>
+          </div>
+
+          <div class="edit" ref="editpharmacycity">
+            <div class="itemright"></div>
+
+            <input
+              class="itemleft input is-info asd"
+              type="text"
+              :value="pharmsyInformation.city"
+              ref="pharmacycityinput"
+            />
+          </div>
         </div>
         <!-- <div class="item">
-          <div class="itemright">موقعك</div>
-          <div class="itemleft">19°56’56.96″S 69°38’1.83″W</div>
+          <div class="itemright">المنطقة</div>
+          <div class="itemleft">{{pharmsyInformation.region}}</div>
         </div>-->
+
+        <div class="item">
+          <div @click="showeditpharmacyregion()" class="items">
+            <div class="itemright">المنطقة</div>
+            <div class="itemleft">{{pharmsyInformation.region}}</div>
+          </div>
+
+          <div class="edit" ref="editpharmacyregion">
+            <div class="itemright"></div>
+
+            <input
+              class="itemleft input is-info asd"
+              type="text"
+              :value="pharmsyInformation.region"
+              ref="pharmacyregioninput"
+            />
+          </div>
+        </div>
+        <!-- <div class="item">
+          <div class="itemright">الشارع</div>
+          <div class="itemleft">{{pharmsyInformation.street}}</div>
+        </div>-->
+
+        <div class="item">
+          <div @click="showeditpharmacystreet()" class="items">
+            <div class="itemright">الشارع</div>
+            <div class="itemleft">{{pharmsyInformation.street}}</div>
+          </div>
+
+          <div class="edit" ref="editpharmacystreet">
+            <div class="itemright"></div>
+
+            <input
+              class="itemleft input is-info asd"
+              type="text"
+              :value="pharmsyInformation.street"
+              ref="pharmacystreetinput"
+            />
+          </div>
+        </div>
+        <!-- <div class="item">
+          <div class="itemright">رقم المبنى</div>
+          <div class="itemleft">{{pharmsyInformation.buildingNumber}}</div>
+        </div>-->
+        <div class="item">
+          <div @click="showeditpharmacybuildingNumber()" class="items">
+            <div class="itemright">رقم المبنى</div>
+            <div class="itemleft">{{pharmsyInformation.buildingNumber}}</div>
+          </div>
+
+          <div class="edit" ref="editpharmacybuildingNumber">
+            <div class="itemright"></div>
+
+            <input
+              class="itemleft input is-info asd"
+              type="text"
+              :value="pharmsyInformation.buildingNumber"
+              ref="pharmacybuildingNumberinput"
+            />
+          </div>
+        </div>
+        <!-- <div class="item">
+          <div class="itemright">اتساع مساحه التوصيل</div>
+          <div class="itemleft">{{pharmsyInformation.breadthOfTheConnectionSpace + ' كيلو'}}</div>
+        </div>-->
+        <div class="item">
+          <div @click="showeditpharmacyConnectionSpace()" class="items">
+            <div class="itemright">اتساع مساحه التوصيل</div>
+            <div class="itemleft">{{pharmsyInformation.breadthOfTheConnectionSpace + ' كيلو'}}</div>
+          </div>
+
+          <div class="edit" ref="editpharmacyConnectionSpace">
+            <div class="itemright"></div>
+
+            <input
+              class="itemleft input is-info asd"
+              type="text"
+              :value="pharmsyInformation.breadthOfTheConnectionSpace"
+              ref="pharmacyConnectionSpaceinput"
+            />
+          </div>
+        </div>
         <div class="item">
           <div class="itemright">خطوط الطول</div>
           <div class="itemleft">{{pharmsyInformation.Latitude}}</div>
@@ -67,8 +172,8 @@
 <script>
 import myVav from "~/components/myVav.vue";
 import axios from "axios";
-const userpharmsylocation =
-  "https://pharmacy-databeas.herokuapp.com/pharmacy-Information";
+const useronerpharmsy =
+  "https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information";
 
 export default {
   components: {
@@ -77,23 +182,82 @@ export default {
   data() {
     return {
       pharmsyInformation: [],
-      pharmacyName: localStorage.getItem("myPharmacyName")
+      userName: localStorage.getItem("userfirstName")
     };
+  },
+  methods: {
+    async seave() {
+      const pharmacyhotlighinput = this.$refs["pharmacyhotlighinput"].value;
+      const pharmacycityinput = this.$refs["pharmacycityinput"].value;
+      const pharmacyregioninput = this.$refs["pharmacyregioninput"].value;
+      const pharmacystreetinput = this.$refs["pharmacystreetinput"].value;
+      const pharmacybuildingNumberinput = this.$refs[
+        "pharmacybuildingNumberinput"
+      ].value;
+      const pharmacyConnectionSpaceinput = this.$refs[
+        "pharmacyConnectionSpaceinput"
+      ].value;
+
+      let id = this.pharmsyInformation.id;
+      console.log(id);
+
+      const res = await axios.patch(
+        `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/${id}`,
+        {
+          pharmacyhotligh: pharmacyhotlighinput,
+          city: pharmacycityinput,
+          region: pharmacyregioninput,
+          street: pharmacystreetinput,
+          buildingNumber: pharmacybuildingNumberinput,
+          breadthOfTheConnectionSpace: pharmacyConnectionSpaceinput
+        }
+      );
+      this.$router.go();
+      const edi = await axios.get(useronerpharmsy);
+      this.userInformation = edi.data;
+    },
+    showeditpharmacyhotligh() {
+      this.$refs["editpharmacyhotligh"].classList.toggle("edit");
+    },
+    showeditpharmacycity() {
+      this.$refs["editpharmacycity"].classList.toggle("edit");
+    },
+    showeditpharmacyregion() {
+      this.$refs["editpharmacyregion"].classList.toggle("edit");
+    },
+    showeditpharmacystreet() {
+      this.$refs["editpharmacystreet"].classList.toggle("edit");
+    },
+    showeditpharmacybuildingNumber() {
+      this.$refs["editpharmacybuildingNumber"].classList.toggle("edit");
+    },
+    showeditpharmacyConnectionSpace() {
+      this.$refs["editpharmacyConnectionSpace"].classList.toggle("edit");
+    }
   },
 
   async created() {
-    // search in all pharmacy with this pharmacy name
-    const res = await axios.get(
-      `https://pharmacy-databeas.herokuapp.com/pharmacy-Information/?name=${this.pharmacyName}`
+    const ressearch = await axios.get(
+      `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/?firstUserName=${this.userName}`
     );
-    this.pharmsyInformation = res.data[0];
-    console.log(res.data[0]);
-    console.log(this.myuser);
+    this.pharmsyInformation = ressearch.data[0];
+    console.log(this.pharmsyInformation);
   }
 };
 </script>
 
 <style scoped>
+.asd {
+  text-align: left;
+}
+.edit {
+  display: none;
+  padding: 20px 0;
+}
+.items {
+  cursor: pointer;
+  user-select: none;
+}
 .head {
   padding: 50px 0;
 }

@@ -27,17 +27,17 @@
             الرئيسية
           </nuxt-link>
 
-          <nuxt-link to="/bell" class="navbar-item">
+          <nuxt-link to="/notificationsCustemer" class="navbar-item">
             <img src="~/assets/img/bell.svg" class="menuImg" />
             الاشعارات
           </nuxt-link>
 
-          <nuxt-link to="/user" class="navbar-item">
+          <nuxt-link to="/userCustomer" class="navbar-item">
             <img src="~/assets/img/user.svg" class="menuImg" />
             الحساب
           </nuxt-link>
 
-          <nuxt-link to="/help" class="navbar-item">
+          <nuxt-link to="/helpCustomer" class="navbar-item">
             <img src="~/assets/img/help.svg" class="menuImg" />
             المساعده
           </nuxt-link>
@@ -67,17 +67,17 @@
           المبيعات و الارباح
         </nuxt-link>
 
-        <nuxt-link to="/bell" class="navbar-item">
+        <nuxt-link to="/notificationsCustemer" class="navbar-item">
           <img src="~/assets/img/bell.svg" class="menuImg" />
           الاشعارات
         </nuxt-link>
 
-        <nuxt-link to="/user" class="navbar-item">
+        <nuxt-link to="/userCustomer" class="navbar-item">
           <img src="~/assets/img/user.svg" class="menuImg" />
           الحساب
         </nuxt-link>
 
-        <nuxt-link to="/help" class="navbar-item">
+        <nuxt-link to="/helpCustomer" class="navbar-item">
           <img src="~/assets/img/help.svg" class="menuImg" />
           المساعده
         </nuxt-link>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <myVav />
+    <customerNave />
     <div class="container">
       <div class="setingsuser">
         <div class="head">
@@ -12,17 +12,17 @@
         </div>
         <div class="item">
           <div class="itemright">الاسم</div>
-          <div class="itemleft">{{pharmsyInformation.firstUserName}}</div>
+          <div class="itemleft">{{userInformation.firstName}}</div>
         </div>
         <!-- <div class="item">
           <div class="itemright">الرقم الهاتف</div>
-          <div class="itemleft">{{pharmsyInformation.userphone}}</div>
+          <div class="itemleft">{{userInformation.userphone}}</div>
         </div>-->
 
         <div class="item">
           <div @click="showeditLastname()" class="items">
             <div class="itemright">الرقم الهاتف</div>
-            <div class="itemleft">{{pharmsyInformation.userphone}}</div>
+            <div class="itemleft">{{userInformation.userphone}}</div>
           </div>
 
           <div class="edit" ref="lastnameedit">
@@ -31,7 +31,7 @@
             <input
               class="itemleft input is-info asd"
               type="text"
-              :value="pharmsyInformation.userphone"
+              :value="userInformation.userphone"
               ref="userphoneinput"
             />
           </div>
@@ -40,7 +40,7 @@
         <div class="item">
           <div @click="showeditEmail ()" class="items">
             <div class="itemright">البريد</div>
-            <div class="itemleft">{{pharmsyInformation.email}}</div>
+            <div class="itemleft">{{userInformation.email}}</div>
           </div>
 
           <div class="edit" ref="edit">
@@ -49,20 +49,20 @@
             <input
               class="itemleft input is-info asd"
               type="text"
-              :value="pharmsyInformation.email"
+              :value="userInformation.email"
               ref="emailinput"
             />
           </div>
         </div>
         <div class="item">
           <div class="itemright">نوع الحساب</div>
-          <div class="itemleft">{{pharmsyInformation.userstat}}</div>
+          <div class="itemleft">{{userInformation.userstat}}</div>
         </div>
 
         <div class="item">
           <div @click="showeditpassword()" class="items">
             <div class="itemright">تعديل كلمة السر</div>
-            <div class="itemleft">{{pharmsyInformation.password}}</div>
+            <div class="itemleft">{{userInformation.password}}</div>
           </div>
 
           <div class="edit" ref="editPassword">
@@ -71,7 +71,7 @@
             <input
               class="itemleft input is-info asd"
               type="text"
-              :value="pharmsyInformation.password"
+              :value="userInformation.password"
               ref="passwordinput"
             />
           </div>
@@ -85,18 +85,18 @@
   </div>
 </template>
 <script>
-import myVav from "~/components/myVav.vue";
+import customerNave from "~/components/customerNave.vue";
 import axios from "axios";
-const useronerpharmsy =
-  "https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information";
+const usersArray =
+  "https://pharmacy-databeas.herokuapp.com/userCustomer-information";
 export default {
   components: {
-    myVav
+    customerNave
   },
   data() {
     return {
-      userName: localStorage.getItem("userfirstName"),
-      pharmsyInformation: []
+      myuser: localStorage.getItem("userfirstName"),
+      userInformation: []
     };
   },
   methods: {
@@ -104,11 +104,11 @@ export default {
       const emailinputvalue = this.$refs["emailinput"].value;
       const userphoneinput = this.$refs["userphoneinput"].value;
       const passwordinput = this.$refs["passwordinput"].value;
-      let id = this.pharmsyInformation.id;
+      let id = this.userInformation.id;
       console.log(id);
 
       const res = await axios.patch(
-        `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/${id}`,
+        `https://pharmacy-databeas.herokuapp.com/userCustomer-information/${id}`,
         {
           email: emailinputvalue,
           password: passwordinput,
@@ -116,7 +116,7 @@ export default {
         }
       );
       this.$router.go();
-      const edi = await axios.get(useronerpharmsy);
+      const edi = await axios.get(usersArray);
       this.userInformation = edi.data;
     },
     logout() {
@@ -134,11 +134,10 @@ export default {
     }
   },
   async created() {
-    const ressearch = await axios.get(
-      `https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information/?firstUserName=${this.userName}`
+    const res = await axios.get(
+      `https://pharmacy-databeas.herokuapp.com/userCustomer-information/?firstName=${this.myuser}`
     );
-    console.log(ressearch.data[0]);
-    this.pharmsyInformation = ressearch.data[0];
+    this.userInformation = res.data[0];
   }
 };
 </script>

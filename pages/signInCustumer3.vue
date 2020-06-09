@@ -70,7 +70,7 @@ export default {
         return;
       }
       const res = await axios.post(usersArray, {
-        name: this.name,
+        firstName: this.name,
         lastName: this.lastName,
         email: this.email,
         password: this.password,
@@ -81,19 +81,19 @@ export default {
         Longitude: this.pharmacyLongitude
       });
 
-      localStorage.setItem("userstat", "customer");
+      // localStorage.setItem("userstat", "customer");
+      localStorage.setItem("userfirstName", this.name);
       //   localStorage.setItem("userfirstName", this.firstName);
       //   localStorage.setItem("userlastName", this.lastName);
       //   localStorage.setItem("useremail", this.email);
       //   localStorage.setItem("userpassword", this.password);
       //   localStorage.setItem("userstat", this.userstat);
-
-      const useracount = localStorage.getItem("userstat");
-      if (useracount == "customer") {
-        this.$router.replace("/customer");
-      } else if (useracount == "oner") {
-        this.$router.replace("/pharmacyowner");
-      }
+      this.$router.replace("/customer");
+      // const useracount = localStorage.getItem("userstat");
+      // if (useracount == "customer") {
+      // } else if (useracount == "oner") {
+      //   this.$router.replace("/pharmacyowner");
+      // }
     }
   }
 };

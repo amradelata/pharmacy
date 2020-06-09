@@ -32,6 +32,7 @@
               v-model="password"
             />
 
+            <input class="input is-primary" type="text" placeholder="البريد" v-model="email" />
             <input
               class="input is-primary"
               type="text"
@@ -167,19 +168,20 @@ export default {
         Longitude: this.pharmacyLatitude
       });
       console.log(res);
-      localStorage.setItem("userstat", "oner");
+      // localStorage.setItem("userstat", "oner");
+      localStorage.setItem("userfirstName", this.firstUserName);
       // localStorage.setItem("userfirstName", this.firstName);
       // localStorage.setItem("userlastName", this.lastName);
       // localStorage.setItem("useremail", this.email);
       // localStorage.setItem("userpassword", this.password);
       // localStorage.setItem("userstat", this.userstat);
-
-      const useracount = localStorage.getItem("userstat");
-      if (useracount == "customer") {
-        this.$router.replace("/customer");
-      } else if (useracount == "oner") {
-        this.$router.replace("/pharmacyowner");
-      }
+      this.$router.replace("/pharmacyowner");
+      // const useracount = localStorage.getItem("userstat");
+      // if (useracount == "customer") {
+      //   this.$router.replace("/customer");
+      // } else if (useracount == "oner") {
+      //   this.$router.replace("/pharmacyowner");
+      // }
     }
   }
 };
