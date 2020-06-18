@@ -21,24 +21,25 @@
     </div>-->
 
     <!-- displayNone -->
-    <div class="newOrder" ref="newOrder" v-for="item in orders" :key="item.id">
+    <div class="newOrder" ref="newOrder">
       <div class="cards">
         <div class="card">
           <label>السلع المطلوبه</label>
           <hr />
           <!-- <img src="~/assets/img/غسول.png" /> -->
-          <div class="contnt">
+          <div class="contnt" v-for="item in orders" :key="item.id">
             <p class="name">{{item.tradename}}</p>
             <span class="price">{{item.price}} EGP</span>
+            <p class="qty">{{'عدد : '+item.quantity}}</p>
           </div>
-          <span class="qt">x1</span>
+          <span class="qt">{{' عدد المنتجات الكلى : ' + this.qty}}</span>
           <br />
           <hr />
 
           <br />
           <hr />
           <span class="total">:المجموع</span>
-          <span class="totalNumper">68.25</span>
+          <span class="totalNumper">{{this.totalprice}}</span>
         </div>
         <div class="card">
           <label>التعليقات المصوره والمكتوبه</label>
@@ -76,7 +77,9 @@ import Axios from "axios";
 export default {
   data() {
     return {
-      orders: []
+      orders: [],
+      qty: 0,
+      totalprice: 0
     };
   },
   components: {
@@ -92,12 +95,23 @@ export default {
     const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
     const res = await Axios.get(orderAPI);
     this.orders = res.data;
-    // console.log(res.data);
+    this.orders = this.orders[1][0];
+    this.totalprice = res.data[1][1];
+    this.qty = res.data[1][2];
+    console.log(this.orders);
   }
 };
 </script>
 
 <style scoped>
+.qty,
+.price,
+.name {
+  margin: 10px 0;
+}
+.name {
+  font-size: 20px;
+}
 .cards {
   display: flex;
   flex-wrap: wrap;

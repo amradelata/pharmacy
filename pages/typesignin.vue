@@ -7,9 +7,9 @@
           <div class="control">
             <!--acunt tayp  -->
             <div class="control">
-              <p class="is-size-1">نوع الحساب</p>
+              <p class="is-size-1 has-text-black">نوع الحساب</p>
               <button class="button is-large is-primary" @click="useroner()">مشترى</button>
-              <span class="mideltext">او</span>
+              <span class="mideltext has-text-black">او</span>
               <button class="button is-large is-primary" @click="usercustomer()">مالك صيدلية</button>
             </div>
             <!-- acunt tayp -->

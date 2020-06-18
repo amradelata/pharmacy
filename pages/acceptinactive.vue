@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="acseptOrderTow">
+    <myVav />
     <div class="cancel">
       <p class="is-size-1 has-text-success refusetext">قبول الطلب</p>
       <p
@@ -37,8 +38,20 @@
     </div>
   </div>
 </template>
+<script>
+import myVav from "~/components/myVav.vue";
+export default {
+  components: {
+    myVav
+  }
+};
+</script>
 
 <style scoped>
+.acseptOrderTow {
+  background: #1d2c4d;
+  padding-bottom: 100px;
+}
 .cancel {
   text-align: center;
   color: aliceblue;

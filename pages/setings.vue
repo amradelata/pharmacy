@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="setings">
     <myVav />
     <div class="container">
       <div class="setings">
@@ -247,8 +247,13 @@ export default {
 </script>
 
 <style scoped>
+.setings {
+  background: #1d2c4d;
+  padding-bottom: 35px;
+}
 .asd {
   text-align: left;
+  margin-top: 5px;
 }
 .edit {
   display: none;

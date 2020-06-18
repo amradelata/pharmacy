@@ -27,20 +27,20 @@
             الرئيسية
           </nuxt-link>
 
-          <nuxt-link to="/notificationsCustemer" class="navbar-item">
+          <!-- <nuxt-link to="/notificationsCustemer" class="navbar-item">
             <img src="~/assets/img/bell.svg" class="menuImg" />
             الاشعارات
-          </nuxt-link>
+          </nuxt-link>-->
 
           <nuxt-link to="/userCustomer" class="navbar-item">
             <img src="~/assets/img/user.svg" class="menuImg" />
             الحساب
           </nuxt-link>
 
-          <nuxt-link to="/helpCustomer" class="navbar-item">
+          <!-- <nuxt-link to="/helpCustomer" class="navbar-item">
             <img src="~/assets/img/help.svg" class="menuImg" />
             المساعده
-          </nuxt-link>
+          </nuxt-link>-->
 
           <nuxt-link to="/logOut" class="navbar-item">
             <img src="~/assets/img/logout.svg" class="menuImg" />
@@ -57,30 +57,30 @@
           الرئيسية
         </nuxt-link>
 
-        <nuxt-link to="/orders" class="navbar-item">
+        <!-- <nuxt-link to="/orders" class="navbar-item">
           <img src="~/assets/img/orders.svg" class="menuImg" />
           الطلبات
-        </nuxt-link>
+        </nuxt-link>-->
 
-        <nuxt-link to="/Profits" class="navbar-item">
+        <!-- <nuxt-link to="/Profits" class="navbar-item">
           <img src="~/assets/img/Profits.svg" class="menuImg" />
           المبيعات و الارباح
-        </nuxt-link>
+        </nuxt-link>-->
 
-        <nuxt-link to="/notificationsCustemer" class="navbar-item">
+        <!-- <nuxt-link to="/notificationsCustemer" class="navbar-item">
           <img src="~/assets/img/bell.svg" class="menuImg" />
           الاشعارات
-        </nuxt-link>
+        </nuxt-link>-->
 
         <nuxt-link to="/userCustomer" class="navbar-item">
           <img src="~/assets/img/user.svg" class="menuImg" />
           الحساب
         </nuxt-link>
 
-        <nuxt-link to="/helpCustomer" class="navbar-item">
+        <!-- <nuxt-link to="/helpCustomer" class="navbar-item">
           <img src="~/assets/img/help.svg" class="menuImg" />
           المساعده
-        </nuxt-link>
+        </nuxt-link>-->
 
         <nuxt-link to="/logOut" class="navbar-item">
           <img src="~/assets/img/logout.svg" class="menuImg" />

@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="acseptOrderOne">
+    <myVav />
     <div class="done">
       <p class="is-size-1 has-text-success refusetext">قبول الطلب</p>
       <p
@@ -28,8 +29,19 @@
     </div>
   </div>
 </template>
-
+<script>
+import myVav from "~/components/myVav.vue";
+export default {
+  components: {
+    myVav
+  }
+};
+</script>
 <style scoped>
+.acseptOrderOne {
+  background: #1d2c4d;
+  padding-bottom: 100px;
+}
 .done {
   text-align: center;
   color: aliceblue;

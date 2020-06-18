@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="user">
     <myVav />
     <div class="container">
       <div class="setingsuser">
@@ -120,7 +120,9 @@ export default {
       this.userInformation = edi.data;
     },
     logout() {
-      window.localStorage.clear();
+      localStorage.setItem("userpassword", null);
+      localStorage.setItem("userfirstName", null);
+      localStorage.setItem("myPharmacyName", null);
       this.$router.replace("/");
     },
     showeditEmail() {
@@ -144,8 +146,12 @@ export default {
 </script>
 
 <style scoped>
+.user {
+  background: #1d2c4d;
+}
 .asd {
   text-align: left;
+  margin-top: 10px;
 }
 .edit {
   display: none;

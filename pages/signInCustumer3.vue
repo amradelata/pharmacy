@@ -3,6 +3,7 @@
     <!-- user states -->
     <div class="home">
       <div class="hometext">
+        <p class="is-size-1 has-text-black">من فضلك ادخل البيانات التاليه</p>
         <!-- inptus -->
         <div class="field">
           <div class="control">
@@ -68,18 +69,27 @@ export default {
       if (nameres.data.length > 0) {
         alert("هذا الاسم موجود بالفعل ");
         return;
+      } else if (
+        this.firstName === "" ||
+        this.email === "" ||
+        this.password === "" ||
+        this.userphone === "" ||
+        this.Latitude === "" ||
+        this.Longitude === ""
+      ) {
+        alert("من فضلك فم بمليء كل البيانات ");
+        return;
+      } else {
+        const res = await axios.post(usersArray, {
+          firstName: this.name,
+          email: this.email,
+          password: this.password,
+          userphone: this.userphone,
+          userstat: "customer",
+          Latitude: this.pharmacyLatitude,
+          Longitude: this.pharmacyLongitude
+        });
       }
-      const res = await axios.post(usersArray, {
-        firstName: this.name,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password,
-        userphone: this.userphone,
-        userstat: this.userstat,
-        userstat: "customer",
-        Latitude: this.pharmacyLatitude,
-        Longitude: this.pharmacyLongitude
-      });
 
       // localStorage.setItem("userstat", "customer");
       localStorage.setItem("userfirstName", this.name);

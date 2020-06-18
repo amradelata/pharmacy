@@ -3,6 +3,7 @@
     <!-- user states -->
     <div class="home">
       <div class="hometext">
+        <p class="is-size-1 has-text-black">من فضلك ادخل البيانات التاليه</p>
         <!-- inptus -->
         <div class="field">
           <div class="control">

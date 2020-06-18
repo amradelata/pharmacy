@@ -7,11 +7,11 @@
         <div class="field">
           <div class="control">
             <!--putons  -->
-            <p class="is-size-1">هل تريد</p>
+            <p class="is-size-1 has-text-black">هل تريد</p>
             <nuxt-link to="/typelogin">
               <button class="button is-large is-primary">تسجيل الدخول</button>
             </nuxt-link>
-            <span class="mideltext">او</span>
+            <span class="mideltext has-text-black">او</span>
             <nuxt-link to="/typesignin">
               <button class="button is-large is-primary">حساب جديد</button>
             </nuxt-link>
@@ -120,6 +120,10 @@ export default {
 </script>
 
 <style  scoped>
+p,
+span {
+  color: #000;
+}
 .control {
   text-align: center;
 }

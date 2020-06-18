@@ -3,6 +3,7 @@
     <!-- user states -->
     <div class="home">
       <div class="hometext">
+        <p class="is-size-1 has-text-black">من فضلك ادخل البيانات التاليه</p>
         <!-- inptus -->
         <div class="field">
           <div class="control">
@@ -58,6 +59,13 @@ export default {
       console.log(nameres.data, basswordres.data);
       if (nameres.data.length > 0 && basswordres.data.length > 0) {
         this.$router.replace("/pharmacyowner");
+      } else if (
+        this.password === "" ||
+        this.firstName === "" ||
+        this.pharmacyName === ""
+      ) {
+        alert("من فضلك فم بمليء كل البيانات ");
+        return;
       } else {
         alert("الرقم السرى  او اسم المستخدم خطأ");
       }

@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="customer">
     <customerNave />
     <!-- map -->
     <div class="map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13913.965682582799!2d30.86137795!3d29.326590599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1580298588986!5m2!1sen!2seg"
         width="100%"
+        height="100%"
         frameborder="0"
         style="border:0;"
         allowfullscreen
@@ -13,11 +14,15 @@
     </div>
     <!-- map -->
 
-    <div class="container">
+    <div class="container ltr">
       <!-- show The nearest pharmacy to the user-->
-      <button class="button mysearchptn" @click="getyourLocation(),runGetDistance()">اقرب صيدلية</button>
+      <button
+        class="button mysearchptn near"
+        @click="getyourLocation(),runGetDistance()"
+      >اقرب صيدلية</button>
+
       <!-- search input& button -->
-      <div class="field has-addons">
+      <div class="field has-addons searchdrug">
         <div class="control" style="width: 100%">
           <input class="input" type="text" placeholder="ابحث عن الدواء" v-model="search" />
         </div>
@@ -25,16 +30,53 @@
           <a class="button mysearchptn">بحث</a>
         </div>
       </div>
-      <!-- my cards -->
-      <div class="cards">
-        <div v-for="(item,index) in drugs" :key="item.id" class="card">
-          <!-- <div v-for="(item,index) in myresolts" :key="item.id" class="card"> -->
-          <p class="is-size-5">{{'Trade Name : ' + item.tradename}}</p>
-          <br />
-          <br />
-          <p class="is-size-6">{{'Price : ' + item.price + ' EG'}}</p>
-          <br />
-          <button class="button is-info" @click="order(index,item.id) ,shownotfcation()">طلب</button>
+      <ul class="carts" v-if="this.mylocalStorageCard != null">
+        <p class="is-size-3">cart item/s {{this.mylocalStorageQty}}</p>
+
+        <li class="cart" v-for="(item,index) in mylocalStorageCard" :key="item.id">
+          <div>
+            <p class="is-size-6">{{' name : ' + item.tradename}}</p>
+            <p class="is-size-6 has-text-success">{{ "price : "+item.price + ' EGP'}}</p>
+            {{"qty : "+item.quantity}}
+            <div class="cartbuttons">
+              <button
+                class="cartbutton button is-success"
+                @click="mydelete(i = item.id, index)"
+              >delete</button>
+              <button class="cartbutton button is-success" @click="addtoquantty(i = item.id)">+</button>
+
+              <button
+                v-if="item.quantity"
+                class="cartbutton button is-success"
+                @click="removefromquantty(i = item.id, index)"
+              >-</button>
+            </div>
+          </div>
+        </li>
+
+        <p
+          class="is-size-3 has-text-success"
+        >{{' Total price : ' + this.mylocalStorageTolalPrice + " EGP"}}</p>
+        <button class="button" @click="Confirm()">تاكيد الشراء</button>
+      </ul>
+      <div v-for="item  in myresolts" :key="item.id" class="dad">
+        <div class="child">
+          <div class="mttext">
+            <p class="is-size-2 name">{{item.tradename}}</p>
+            <p class="is-size-5 price has-text-success">{{ "price : "+item.price + ' EGP'}}</p>
+            <p class="is-size-6 color has-text-info">{{item.company}}</p>
+            <p class="is-size-5">{{item.pamphlet}}</p>
+            <div class="mybuttons">
+              <button
+                class="addbutton button is-success"
+                @click="add(i= item.id),shownotfcation()"
+              >Buy</button>
+            </div>
+            <button
+              @click="add(i= item.id),shownotfcation()"
+              class="buybtnphone button is-success"
+            >Buy</button>
+          </div>
         </div>
       </div>
     </div>
@@ -52,6 +94,9 @@ export default {
     return {
       drugs: [],
       search: "",
+      mylocalStorageCard: [],
+      mylocalStorageQty: 0,
+      mylocalStorageTolalPrice: 0,
       // my fake phrmsy data
       pharmsylocation: [
         { Latitude: "30.039358", Longitude: "31.233043", name: "egypt" },
@@ -70,7 +115,6 @@ export default {
     const res = await axios.get(API);
     this.drugs = res.data;
     this.drugs = this.drugs.slice(0, 25);
-    // console.log(this.drugs)
   },
   computed: {
     myresolts() {
@@ -86,13 +130,13 @@ export default {
       }
     }
   },
+  mounted() {
+    //when i refresh  git my cart data from localStorage
+    this.mylocalStorageCard = JSON.parse(localStorage.getItem("cart"));
+    this.mylocalStorageTolalPrice = localStorage.getItem("totalprice");
+    this.mylocalStorageQty = localStorage.getItem("qty");
+  },
   methods: {
-    async order(index) {
-      const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
-      const res = await axios.post(orderAPI, this.drugs[index]);
-      // console.log(this.drugs[index])
-      // this.posts.push(res.data)
-    },
     shownotfcation() {
       // start animation delete popup
       Swal.fire({
@@ -133,42 +177,217 @@ export default {
       const arr = this.pharmsylocation.map(this.getDistanceFromLatLonInKm);
       const min = Math.min(...arr);
       console.log(min);
+    },
+    //cart functions
+    savelogecstander() {
+      // localStorage
+      localStorage.setItem("totalprice", this.mylocalStorageTolalPrice);
+      localStorage.setItem("qty", this.mylocalStorageQty);
+      let mystringCart = JSON.stringify(this.mylocalStorageCard); //convert  my array of opject to string to save it on localStorage
+      localStorage.setItem("cart", mystringCart); //set cart string
+      // localStorage
+    },
+    async Confirm() {
+      const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
+      const userorder = [];
+      userorder.push(
+        this.mylocalStorageCard,
+        this.mylocalStorageTolalPrice,
+        this.mylocalStorageQty
+      );
+      // console.log(userorder)
+      const res = await axios.post(orderAPI, userorder);
+    },
+
+    async add(i) {
+      const addres = await axios.get(
+        `https://pharmacy-databeas.herokuapp.com/drugs/?id=${i}`
+      );
+
+      if (
+        this.mylocalStorageCard === null ||
+        this.mylocalStorageCard.length === 0
+      ) {
+        //this is first item in my cart
+        this.mylocalStorageCard = [];
+        addres.data[0].quantity = 1; //add new key quantity = 1
+        this.mylocalStorageCard.push(addres.data[0]); //push this item to my cart opject
+        this.mylocalStorageTolalPrice =
+          +this.mylocalStorageTolalPrice + +addres.data[0].price;
+        this.mylocalStorageQty++;
+        //save
+        this.savelogecstander(i);
+      } else if (
+        this.mylocalStorageCard != null &&
+        this.mylocalStorageCard.length > 0
+      ) {
+        //if this the new item but not the first in cart
+        let mystringCartFromLocalStorage = localStorage.getItem("cart"); //get my string cart from localStorage
+        let myObject = JSON.parse(mystringCartFromLocalStorage); // return my sting to array of objects
+        const findInMylocalStorageCard = this.mylocalStorageCard.find(
+          //search in mylocalStorageCard array of my cliked item
+          item => item.id === addres.data[0].id
+        );
+        if (findInMylocalStorageCard != undefined) {
+          //if this item in my cart do not add it again  add to qty ++
+          findInMylocalStorageCard.quantity++;
+          this.mylocalStorageQty++;
+
+          this.mylocalStorageTolalPrice =
+            +this.mylocalStorageTolalPrice + +findInMylocalStorageCard.price;
+          //save
+          this.savelogecstander();
+        } else {
+          //if i have items in my cart but this selected item not found
+          addres.data[0].quantity = 1; //add new key quantity = 1
+          myObject.push(addres.data[0]); //push this item to my local storedg cart
+          this.mylocalStorageCard = myObject; //add my local storedg cart to my cart opject
+          this.mylocalStorageTolalPrice =
+            +this.mylocalStorageTolalPrice + +addres.data[0].price;
+          this.mylocalStorageQty++;
+          //save
+          this.savelogecstander(i);
+        }
+      }
+    },
+    addtoquantty(i) {
+      const myclickdObject = this.mylocalStorageCard.find(
+        item => item.id === i
+      );
+      console.log(this.mylocalStorageTolalPrice);
+      myclickdObject.quantity++;
+      this.mylocalStorageQty++;
+
+      this.mylocalStorageTolalPrice =
+        +this.mylocalStorageTolalPrice + +myclickdObject.price;
+
+      // save
+      this.savelogecstander();
+    },
+    removefromquantty(i, index) {
+      const myclickdObject = this.mylocalStorageCard.find(
+        item => item.id === i
+      );
+
+      myclickdObject.quantity--;
+      this.mylocalStorageQty--;
+
+      this.mylocalStorageTolalPrice =
+        +this.mylocalStorageTolalPrice + -myclickdObject.price;
+      if (myclickdObject.quantity === 0) {
+        this.mylocalStorageCard.splice(index, 1);
+      }
+      //save
+      this.savelogecstander();
+    },
+    mydelete(i, index) {
+      const myclickdObject = this.mylocalStorageCard.find(
+        item => item.id === i
+      );
+
+      this.mylocalStorageCard.splice(index, 1);
+      this.mylocalStorageTolalPrice =
+        +this.mylocalStorageTolalPrice +
+        -myclickdObject.price * myclickdObject.quantity;
+      this.mylocalStorageQty =
+        +this.mylocalStorageQty + -myclickdObject.quantity;
+      //save
+      this.savelogecstander();
     }
+    //cart functions
   }
 };
 </script>
 
-<style scoped>
-.cards {
-  display: flex;
-  flex-wrap: wrap;
+<style  scoped>
+.searchdrug {
+  margin-bottom: 50px;
 }
-.card {
-  flex-basis: calc(25% - 20px);
-  display: inline-block;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22);
-  padding: 35px;
+.ltr {
+  direction: ltr;
+}
+.child {
+  position: relative;
+  margin: 100px 0;
+  padding: 20px 100px 20px 20px;
   cursor: pointer;
-  text-align: center;
 }
-.input {
-  margin: 20px auto;
+.mttext {
+  padding: 20px;
+  z-index: 9999999;
+  background: #fff;
+  border-radius: 5px;
 }
-.map iframe {
-  height: 100vh;
+.near {
+  margin: 50px 0;
 }
-.mysearchptn {
-  margin-top: 20px;
-  color: #fff;
-  background: #3298dc;
-  /* padding: 0; */
-  border-radius: 0 !important;
+.name,
+.price {
+  display: inline-block;
+}
+.price {
+  margin-left: 100px;
+}
+.child:hover .mybuttons {
+  right: 20px;
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+.child:hover .mttext {
+  box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22);
+}
+.mybuttons {
+  position: absolute;
+  top: 20px;
+  right: 200px;
+  opacity: 0;
+  z-index: -1;
+}
+.addbutton {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 10px 0;
+}
+.carts {
+  background: #21304f;
+  color: aliceblue;
+  /* box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22); */
+  padding: 35px;
+  margin-bottom: 100px;
+}
+.cart {
+  box-shadow: 0 0 38px rgba(117, 117, 115, 0.3), 0 0 0 rgba(220, 235, 14, 0.22);
+  padding: 20px;
+  background: #22282f;
+  margin: 20px 0;
+}
+.cartbuttons {
+  margin: 20px 0;
+}
+.buybtnphone {
+  display: none;
 }
 @media screen and (max-width: 768px) {
-  .card {
-    flex-basis: calc(100% - 20px);
+  .customer {
+    overflow-x: hidden;
+  }
+  .child {
+    padding: 0;
+    text-align: center;
+  }
+  .price {
+    margin-left: 0;
+  }
+  .mybuttons {
+    display: none;
+  }
+  .buybtnphone {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="logout">
     <myVav />
 
     <!-- user states -->
@@ -21,7 +21,9 @@ export default {
   },
   methods: {
     logout() {
-      window.localStorage.clear();
+      localStorage.setItem("userpassword", null);
+      localStorage.setItem("userfirstName", null);
+      localStorage.setItem("myPharmacyName", null);
       this.$router.replace("/");
     }
   }
@@ -29,10 +31,13 @@ export default {
 </script>
 
 <style  scoped>
+.logout {
+  background: #1d2c4d;
+}
 .home {
   text-align: center;
   position: relative;
-  height: 100vh;
+  height: 95vh;
   width: 100vw;
 }
 .home p {

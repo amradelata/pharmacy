@@ -2,6 +2,7 @@
   <div>
     <!-- user states -->
     <div class="home">
+      <p class="is-size-1 has-text-black">من فضلك ادخل البيانات التاليه</p>
       <div class="hometext">
         <!-- inptus -->
         <div class="field">
@@ -150,6 +151,23 @@ export default {
       if (mypharmacyName.data.length > 0) {
         alert("هذا الاسم موجود بالفعل ");
         return;
+      } else if (
+        this.userphone === "" ||
+        this.firstUserName === "" ||
+        this.email === "" ||
+        this.pharmacyName === "" ||
+        this.pharmacyhotligh === "" ||
+        this.city === "" ||
+        this.region === "" ||
+        this.street === "" ||
+        this.buildingNumber === "" ||
+        this.breadthOfTheConnectionSpace === "" ||
+        this.Latitude === "" ||
+        this.Longitude === "" ||
+        this.firstUserName === ""
+      ) {
+        alert("من فضلك فم بمليء كل البيانات ");
+        return;
       }
       const res = await axios.post(pharmacyInformation, {
         firstUserName: this.firstUserName,
@@ -188,7 +206,13 @@ export default {
 </script>
 
 <style  scoped>
+.field {
+  margin-top: 250px;
+  margin-bottom: 50px;
+}
 .home {
+  margin-top: 50px;
+
   text-align: center;
   position: relative;
   height: 100vh;
