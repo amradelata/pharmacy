@@ -1,46 +1,56 @@
 <template>
-  <div>
-    <!-- user states -->
-    <div class="home">
-      <div class="hometext">
-        <p class="is-size-1 has-text-black">من فضلك ادخل البيانات التاليه</p>
-        <!-- inptus -->
-        <div class="field">
-          <div class="control">
-            <input class="input is-primary" type="text" placeholder="الاسم" v-model="name" />
-            <input class="input is-primary" type="text" placeholder="الايميل" v-model="email" />
+  <div class="signIn">
+    <div class="overlay">
+      <div class="signIncards">
+        <div class="signIncard">
+          <p class="is-size-1 head">صيدلية</p>
+          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+        </div>
+        <div class="signIncard">
+          <div class="myinputs">
+            <p class="is-size-3">من فضلك ادخل البيانات التاليه</p>
+            <!--putons  -->
+            <div class="mybuttons">
+              <!-- inptus -->
+              <div class="field">
+                <div class="control">
+                  <input class="input is-primary" type="text" placeholder="الاسم" v-model="name" />
+                  <input class="input is-primary" type="text" placeholder="الايميل" v-model="email" />
 
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="الرقم السرى"
-              v-model="password"
-            />
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="رقم الهاتف"
-              v-model="userphone"
-            />
+                  <input
+                    class="input is-primary"
+                    type="text"
+                    placeholder="الرقم السرى"
+                    v-model="password"
+                  />
+                  <input
+                    class="input is-primary"
+                    type="text"
+                    placeholder="رقم الهاتف"
+                    v-model="userphone"
+                  />
 
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="حطوط العرض- موقعك"
-              v-model="pharmacyLatitude"
-            />
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="خطوط الطول- موقعك"
-              v-model="pharmacyLongitude"
-            />
+                  <input
+                    class="input is-primary"
+                    type="text"
+                    placeholder="حطوط العرض- موقعك"
+                    v-model="pharmacyLatitude"
+                  />
+                  <input
+                    class="input is-primary"
+                    type="text"
+                    placeholder="خطوط الطول- موقعك"
+                    v-model="pharmacyLongitude"
+                  />
 
-            <button class="button is-primary" @click="submit()">تسجيل الدخول</button>
+                  <button class="button is-primary" @click="submit()">تسجيل الدخول</button>
+                </div>
+              </div>
+
+              <!-- inptus -->
+            </div>
           </div>
         </div>
-
-        <!-- inptus -->
       </div>
     </div>
   </div>
@@ -110,38 +120,63 @@ export default {
 </script>
 
 <style  scoped>
-.home {
+.signIn {
+  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-healthcare-icon_36402-276.jpg") !important;
+  background-position: center center;
+  background-size: cover;
   text-align: center;
   position: relative;
   height: 100vh;
   width: 100vw;
 }
-.home input {
-  margin: 15px 0;
-}
-.home p {
-  margin-bottom: 25px;
-  color: aliceblue;
-}
-.mideltext {
-  font-size: 45px;
-  color: aliceblue;
-  margin: 0 35px;
-}
-.hometext {
+.overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background: #0000009c;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
-.radio {
-  text-align: center;
-  margin: 0 25px;
+.head {
+  color: #00d1b2;
 }
+.signIncards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-top: 20%;
+}
+
+.signIncard {
+  flex-basis: calc(50% - 20px);
+  display: inline-block;
+  background-color: transparent;
+  margin: 10px;
+  padding: 10px;
+  color: #fff;
+}
+.signIncards input {
+  margin: 5px 0;
+}
+
+.mybuttons button {
+  margin-right: 35px;
+  width: 250px;
+}
+.myinputs {
+  margin-top: -100px;
+}
+
 @media screen and (max-width: 768px) {
-  .mideltext {
-    display: block;
-    margin: 35px;
+  .signIncard {
+    flex-basis: calc(100% - 10px);
+  }
+  .mybuttons button {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+  .myinputs {
+    margin-top: 0;
   }
 }
 </style>

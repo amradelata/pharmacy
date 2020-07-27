@@ -1,62 +1,25 @@
 <template>
-  <div>
-    <!-- user states -->
-    <div class="home">
-      <div class="hometext">
-        <!-- inptus -->
-        <div class="field">
-          <div class="control">
-            <!--putons  -->
-            <p class="is-size-1 has-text-black">هل تريد</p>
+  <div class="signIn">
+    <div class="overlay">
+      <div class="signIncards">
+        <div class="signIncard">
+          <p class="is-size-1 head">صيدلية</p>
+          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <p class="is-size-3">هل لديك حساب ؟</p>
+        </div>
+        <div class="signIncard">
+          <p class="is-size-3">هل لديك حساب ؟</p>
+          <!--putons  -->
+          <div class="mybuttons">
             <nuxt-link to="/typelogin">
-              <button class="button is-large is-primary">تسجيل الدخول</button>
-            </nuxt-link>
-            <span class="mideltext has-text-black">او</span>
-            <nuxt-link to="/typesignin">
-              <button class="button is-large is-primary">حساب جديد</button>
+              <button class="button is-primary is-medium">نعم , لدى حساب بالفعل</button>
             </nuxt-link>
 
-            <!-- putons -->
-            <!-- inputs -->
-            <!-- <input class="input is-primary" type="text" placeholder="اسمك" v-model="firstName" />
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="اسم العائلة"
-              v-model="lastName"
-            />
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="الرقم السرى"
-              v-model="password"
-            />
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="البريد الالكترونى"
-              v-model="email"
-            />-->
-            <!-- inputs -->
-            <!--acunt tayp  -->
-            <!-- <div class="control">
-              <p>نوع الحساب</p>
-              <label class="radio">
-                <input type="radio" name="foobar" @click="useroner()" />
-                <p class="is-size-6">مشترى</p>
-              </label>
-              <label class="radio">
-                <input type="radio" name="foobar" @click="usercustomer()" />
-                <p class="is-size-6">مالك صيدلية</p>
-              </label>
-            </div>-->
-            <!-- acunt tayp -->
-            <!-- <br />
-            <button class="button is-primary" @click="submit()">التالى</button>-->
+            <nuxt-link to="/typesignin">
+              <button class="button is-primary is-medium">لا , اود انشاء حساب</button>
+            </nuxt-link>
           </div>
         </div>
-
-        <!-- inptus -->
       </div>
     </div>
   </div>
@@ -120,45 +83,57 @@ export default {
 </script>
 
 <style  scoped>
-p,
-span {
-  color: #000;
-}
-.control {
-  text-align: center;
-}
-.home {
+.signIn {
+  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-consist-doctor-digital-technology_36402-141.jpg") !important;
+  background-position: center center;
+  background-size: cover;
   text-align: center;
   position: relative;
   height: 100vh;
   width: 100vw;
 }
-.home input {
-  margin: 15px 0;
-}
-.home p {
-  margin-bottom: 25px;
-  color: aliceblue;
-}
-.mideltext {
-  font-size: 45px;
-  color: aliceblue;
-  margin: 0 35px;
-}
-.hometext {
+.overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background: #0000009c;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
-.radio {
-  text-align: center;
-  margin: 0 25px;
+.head {
+  color: #00d1b2;
 }
+.signIncards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-top: 20%;
+}
+
+.signIncard {
+  flex-basis: calc(50% - 20px);
+  display: inline-block;
+  background-color: transparent;
+  margin: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.mybuttons {
+  margin-top: 30px;
+}
+.mybuttons button {
+  margin-right: 35px;
+  width: 250px;
+}
+
 @media screen and (max-width: 768px) {
-  .mideltext {
-    display: block;
-    margin: 35px;
+  .signIncard {
+    flex-basis: calc(100% - 10px);
+  }
+  .mybuttons button {
+    margin-right: 0;
+    margin-top: 20px;
   }
 }
 </style>

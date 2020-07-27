@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <div class="home">
-      <div class="hometext">
-        <!-- inptus -->
-        <div class="field">
-          <div class="control">
-            <!--acunt tayp  -->
-            <div class="control">
-              <p class="is-size-1 has-text-black">نوع الحساب</p>
-              <button class="button is-large is-primary" @click="useroner()">مشترى</button>
-              <span class="mideltext has-text-black">او</span>
-              <button class="button is-large is-primary" @click="usercustomer()">مالك صيدلية</button>
-            </div>
-            <!-- acunt tayp -->
+  <div class="signIn">
+    <div class="overlay">
+      <div class="signIncards">
+        <div class="signIncard">
+          <p class="is-size-1 head">صيدلية</p>
+          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+        </div>
+        <div class="signIncard">
+          <p class="is-size-3">ما نوع الحساب الذى تريد انشائه ؟</p>
+          <!--putons  -->
+          <div class="mybuttons">
+            <button class="button is-medium is-primary" @click="useroner()">مشترى</button>
+
+            <button class="button is-medium is-primary" @click="usercustomer()">مالك صيدلية</button>
           </div>
         </div>
       </div>
@@ -39,44 +39,58 @@ export default {
   }
 };
 </script>
-
-
 <style  scoped>
-.control {
-  text-align: center;
-}
-.home {
+.signIn {
+  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-consist-dna_36402-305.jpg") !important;
+  background-position: center center;
+  background-size: cover;
   text-align: center;
   position: relative;
   height: 100vh;
   width: 100vw;
 }
-.home input {
-  margin: 15px 0;
-}
-.home p {
-  margin-bottom: 25px;
-  color: aliceblue;
-}
-.mideltext {
-  font-size: 45px;
-  color: aliceblue;
-  margin: 0 35px;
-}
-.hometext {
+.overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background: #0000009c;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
-.radio {
-  text-align: center;
-  margin: 0 25px;
+.head {
+  color: #00d1b2;
 }
+.signIncards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-top: 20%;
+}
+
+.signIncard {
+  flex-basis: calc(50% - 20px);
+  display: inline-block;
+  background-color: transparent;
+  margin: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.mybuttons {
+  margin-top: 30px;
+}
+.mybuttons button {
+  margin-right: 35px;
+  width: 250px;
+}
+
 @media screen and (max-width: 768px) {
-  .mideltext {
-    display: block;
-    margin: 35px;
+  .signIncard {
+    flex-basis: calc(100% - 10px);
+  }
+  .mybuttons button {
+    margin-right: 0;
+    margin-top: 20px;
   }
 }
 </style>
