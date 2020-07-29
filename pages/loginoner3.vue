@@ -4,11 +4,11 @@
       <div class="signIncards">
         <div class="signIncard">
           <p class="is-size-1 head">صيدلية</p>
-          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <p class="is-size-3 has-text-black">اول موقع لتوصيل الأدويه فى العالم العربى</p>
         </div>
         <div class="signIncard">
           <div class="myinputs">
-            <p class="is-size-3">من فضلك ادخل البيانات التاليه</p>
+            <p class="is-size-3 has-text-black">من فضلك ادخل البيانات التاليه</p>
             <!-- inptus -->
             <div class="field">
               <div class="control">
@@ -23,7 +23,7 @@
                 <input
                   class="input is-primary"
                   type="text"
-                  placeholder="اسم الصيدليه  اذا كنت صاحب الصيدليه فقط"
+                  placeholder="اسم الصيدليه "
                   v-model="pharmacyName"
                 />
 
@@ -83,7 +83,7 @@ export default {
 
 <style  scoped>
 .signIn {
-  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-consist-dna_36402-305.jpg") !important;
+  /* background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-consist-dna_36402-305.jpg") !important; */
   background-position: center center;
   background-size: cover;
   text-align: center;
@@ -93,7 +93,7 @@ export default {
 }
 .overlay {
   position: absolute;
-  background: #0000009c;
+  /* background: #0000009c; */
   top: 0;
   bottom: 0;
   right: 0;
@@ -126,10 +126,23 @@ export default {
 
 .mybuttons button {
   margin-right: 35px;
-  width: 250px;
+  /* width: 250px; */
 }
-
+.control {
+  text-align: center;
+}
 @media screen and (max-width: 768px) {
+  .signIn {
+    /* background-image: none; */
+    height: 120vh;
+  }
+
+  /* .overlay {
+    background: #fff;
+  } */
+  .signIncards {
+    margin-right: 0;
+  }
   .signIncard {
     flex-basis: calc(100% - 10px);
   }

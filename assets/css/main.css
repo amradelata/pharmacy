@@ -5,11 +5,7 @@ body {
   
 }
 
-.container{
-  width: 100vw !important;
-  /* height: 100vh; */
-  /* background: #1d2c4d !important; */
-}
+
 
 .notification {
   text-align: center

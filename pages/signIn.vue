@@ -5,7 +5,6 @@
         <div class="signIncard">
           <p class="is-size-1 head">صيدلية</p>
           <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
-          <p class="is-size-3">هل لديك حساب ؟</p>
         </div>
         <div class="signIncard">
           <p class="is-size-3">هل لديك حساب ؟</p>
@@ -134,6 +133,9 @@ export default {
   .mybuttons button {
     margin-right: 0;
     margin-top: 20px;
+  }
+  .signIncards {
+    margin-right: 0;
   }
 }
 </style>

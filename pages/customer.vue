@@ -57,7 +57,8 @@
         <p
           class="is-size-3 has-text-success"
         >{{' Total price : ' + this.mylocalStorageTolalPrice + " EGP"}}</p>
-        <button class="button" @click="Confirm()">تاكيد الشراء</button>
+        <div class="is-size-5 flatshipping">Flat Shipping Credit 10 EGP</div>
+        <button class="button" @click="Confirm(),shownotfcation()">تاكيد الشراء</button>
       </ul>
       <div v-for="item  in myresolts" :key="item.id" class="dad">
         <div class="child">
@@ -67,15 +68,9 @@
             <p class="is-size-6 color has-text-info">{{item.company}}</p>
             <p class="is-size-5">{{item.pamphlet}}</p>
             <div class="mybuttons">
-              <button
-                class="addbutton button is-success"
-                @click="add(i= item.id),shownotfcation()"
-              >Buy</button>
+              <button class="addbutton button is-success" @click="add(i= item.id)">Buy</button>
             </div>
-            <button
-              @click="add(i= item.id),shownotfcation()"
-              class="buybtnphone button is-success"
-            >Buy</button>
+            <button @click="add(i= item.id)" class="buybtnphone button is-success">Buy</button>
           </div>
         </div>
       </div>
@@ -106,8 +101,10 @@ export default {
         { Latitude: "29.328459", Longitude: " 30.888652", name: "elfyom" },
         { Latitude: "29.325537", Longitude: " 30.854909", name: "myplace" }
       ],
-      userLatitude: localStorage.getItem("Latitude: "),
-      userLongitude: localStorage.getItem("Longitude: ")
+      userLatitude: localStorage.getItem("Latitude"),
+      userLongitude: localStorage.getItem("Longitude"),
+      username: localStorage.getItem("userfirstName"),
+      userpassword: localStorage.getItem("userpassword")
     };
   },
   async created() {
@@ -137,13 +134,6 @@ export default {
     this.mylocalStorageQty = localStorage.getItem("qty");
   },
   methods: {
-    shownotfcation() {
-      // start animation delete popup
-      Swal.fire({
-        title: "تم الطلب بنجاح",
-        text: "توقع ان يتم التوصيل فى نصف ساعة "
-      });
-    },
     // get your location
     getyourLocation() {
       if (navigator.geolocation) {
@@ -186,17 +176,6 @@ export default {
       let mystringCart = JSON.stringify(this.mylocalStorageCard); //convert  my array of opject to string to save it on localStorage
       localStorage.setItem("cart", mystringCart); //set cart string
       // localStorage
-    },
-    async Confirm() {
-      const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
-      const userorder = [];
-      userorder.push(
-        this.mylocalStorageCard,
-        this.mylocalStorageTolalPrice,
-        this.mylocalStorageQty
-      );
-      // console.log(userorder)
-      const res = await axios.post(orderAPI, userorder);
     },
 
     async add(i) {
@@ -293,6 +272,28 @@ export default {
         +this.mylocalStorageQty + -myclickdObject.quantity;
       //save
       this.savelogecstander();
+    },
+    //sent cart products to https://pharmacy-databeas.herokuapp.com/User-purchases
+    async Confirm() {
+      const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
+      const userorder = [];
+      userorder.push(
+        this.mylocalStorageCard,
+        "totalprice - " + this.mylocalStorageTolalPrice,
+        "cart qty - " + this.mylocalStorageQty,
+        "name - " + this.username,
+        "userLongitude - " + this.userLongitude,
+        "userLatitude - " + this.userLatitude
+      );
+      // console.log(username);
+      const res = await axios.post(orderAPI, userorder);
+    },
+    shownotfcation() {
+      // start animation delete popup
+      Swal.fire({
+        title: "تم الطلب بنجاح",
+        text: "توقع ان يتم التوصيل فى نصف ساعة "
+      });
     }
     //cart functions
   }
@@ -368,6 +369,9 @@ export default {
 }
 .buybtnphone {
   display: none;
+}
+.flatshipping {
+  margin-bottom: 10px;
 }
 @media screen and (max-width: 768px) {
   .customer {

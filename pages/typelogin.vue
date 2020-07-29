@@ -84,6 +84,9 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .signIncards {
+    margin-right: 0;
+  }
   .signIncard {
     flex-basis: calc(100% - 10px);
   }

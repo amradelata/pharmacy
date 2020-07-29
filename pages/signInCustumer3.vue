@@ -4,11 +4,11 @@
       <div class="signIncards">
         <div class="signIncard">
           <p class="is-size-1 head">صيدلية</p>
-          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <p class="is-size-3 has-text-black">اول موقع لتوصيل الأدويه فى العالم العربى</p>
         </div>
         <div class="signIncard">
           <div class="myinputs">
-            <p class="is-size-3">من فضلك ادخل البيانات التاليه</p>
+            <p class="is-size-3 has-text-black">حساب مشترى</p>
             <!--putons  -->
             <div class="mybuttons">
               <!-- inptus -->
@@ -43,7 +43,7 @@
                     v-model="pharmacyLongitude"
                   />
 
-                  <button class="button is-primary" @click="submit()">تسجيل الدخول</button>
+                  <button class="button is-primary" @click="submit()">تسجيل الحساب</button>
                 </div>
               </div>
 
@@ -121,17 +121,19 @@ export default {
 
 <style  scoped>
 .signIn {
-  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-healthcare-icon_36402-276.jpg") !important;
+  /* background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-healthcare-icon_36402-276.jpg") !important; */
   background-position: center center;
   background-size: cover;
   text-align: center;
   position: relative;
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .overlay {
   position: absolute;
-  background: #0000009c;
+  /* background: #0000009c; */
   top: 0;
   bottom: 0;
   right: 0;
@@ -157,17 +159,25 @@ export default {
 }
 .signIncards input {
   margin: 5px 0;
+  /* width: 250px; */
 }
 
 .mybuttons button {
   margin-right: 35px;
-  width: 250px;
 }
 .myinputs {
   margin-top: -100px;
 }
-
+.control {
+  text-align: center;
+}
 @media screen and (max-width: 768px) {
+  .signIn {
+    height: 150vh;
+  }
+  .signIncards {
+    margin-right: 0;
+  }
   .signIncard {
     flex-basis: calc(100% - 10px);
   }

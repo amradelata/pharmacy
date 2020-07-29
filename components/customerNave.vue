@@ -1,5 +1,5 @@
 <template>
-  <div class="container is-fluid">
+  <div class="is-fluid">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <nuxt-link to="/" class="navbar-item">
@@ -42,7 +42,7 @@
             المساعده
           </nuxt-link>-->
 
-          <nuxt-link to="/logOut" class="navbar-item">
+          <nuxt-link to="/logoutcustumer" class="navbar-item">
             <img src="~/assets/img/logout.svg" class="menuImg" />
             تسجيل الخروج
           </nuxt-link>
@@ -82,7 +82,7 @@
           المساعده
         </nuxt-link>-->
 
-        <nuxt-link to="/logOut" class="navbar-item">
+        <nuxt-link to="/logoutcustumer" class="navbar-item">
           <img src="~/assets/img/logout.svg" class="menuImg" />
           تسجيل الخروج
         </nuxt-link>
@@ -105,9 +105,7 @@ export default {
   margin-right: auto;
   margin-left: 0;
 }
-.container.is-fluid {
-  padding: 0;
-}
+
 .navbar,
 #navbarphone {
   padding-right: 35px;

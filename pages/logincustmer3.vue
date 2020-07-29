@@ -4,11 +4,11 @@
       <div class="signIncards">
         <div class="signIncard">
           <p class="is-size-1 head">صيدلية</p>
-          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <p class="is-size-3 has-text-black">اول موقع لتوصيل الأدويه فى العالم العربى</p>
         </div>
         <div class="signIncard">
           <div class="myinputs">
-            <p class="is-size-3">من فضلك ادخل البيانات التاليه</p>
+            <p class="is-size-3 has-text-black">من فضلك ادخل البيانات التاليه</p>
             <!--putons  -->
             <div class="mybuttons">
               <!-- inptus -->
@@ -75,8 +75,11 @@ export default {
 </script>
 
 <style  scoped>
+.control {
+  text-align: center;
+}
 .signIn {
-  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-healthcare-icon_36402-276.jpg") !important;
+  /* background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-healthcare-icon_36402-276.jpg") !important; */
   background-position: center center;
   background-size: cover;
   text-align: center;
@@ -86,7 +89,7 @@ export default {
 }
 .overlay {
   position: absolute;
-  background: #0000009c;
+  /* background: #0000009c; */
   top: 0;
   bottom: 0;
   right: 0;
@@ -123,6 +126,9 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .signIncards {
+    margin-right: 0;
+  }
   .signIncard {
     flex-basis: calc(100% - 10px);
   }

@@ -5,15 +5,17 @@
       <div class="container">
         <div class="setingsuser">
           <div class="head">
-            <span class="itemright">الحساب</span>
-            <button class="itemleft button is-rounded" @click="seave()">حفظ</button>
+            <span class="itemright">اضغط على الحقل للتغيير</span>
+            <button class="itemleft button is-rounded savebtn" @click="seave()">حفظ</button>
           </div>
           <div class="suphead">
             <span>بيانات الخصوصية</span>
           </div>
           <div class="item">
-            <div class="itemright">الاسم</div>
-            <div class="itemleft">{{userInformation.firstName}}</div>
+            <div @click="youcantchangehis()">
+              <div class="itemright">الاسم</div>
+              <div class="itemleft">{{userInformation.firstName}}</div>
+            </div>
           </div>
           <!-- <div class="item">
             <div class="itemright">الرقم الهاتف</div>
@@ -56,8 +58,10 @@
             </div>
           </div>
           <div class="item">
-            <div class="itemright">نوع الحساب</div>
-            <div class="itemleft">{{userInformation.userstat}}</div>
+            <div @click="youcantchangehis()">
+              <div class="itemright">نوع الحساب</div>
+              <div class="itemleft">{{userInformation.userstat}}</div>
+            </div>
           </div>
 
           <div class="item">
@@ -78,8 +82,8 @@
             </div>
           </div>
 
-          <div style="text-align: center; padding: 100px 20px">
-            <button class="button is-light" style="width: 100%" @click="logout()">نسجيل الخروج</button>
+          <div style="padding: 80px 20px">
+            <button class="button is-light" style="width: 100%" @click="logout()">تسجيل الخروج</button>
           </div>
         </div>
       </div>
@@ -135,6 +139,9 @@ export default {
     },
     showeditpassword() {
       this.$refs["editPassword"].classList.toggle("edit");
+    },
+    youcantchangehis() {
+      alert("لا يمكنك تغيير هذه الحقل");
     }
   },
   async created() {
@@ -147,12 +154,19 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  padding: 0 20px;
+}
 .user {
   background: #1d2c4d;
   padding-bottom: 100px;
+  color: aliceblue;
+  height: auto;
+  width: 100vw;
 }
 .asd {
   text-align: left;
+  margin-top: 10px;
 }
 .edit {
   display: none;
@@ -166,10 +180,6 @@ export default {
   padding: 50px 0;
 }
 
-.setingsuser {
-  color: aliceblue;
-  height: 100vh;
-}
 .itemright,
 .itemleft {
   display: inline-block;
@@ -196,9 +206,8 @@ export default {
   padding-top: 30px;
 }
 @media screen and (max-width: 768px) {
-  .itemright {
-    /* padding-right: 20px;
-    padding-left: 20px; */
+  .savebtn {
+    left: 4%;
   }
 }
 </style>
