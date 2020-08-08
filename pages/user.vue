@@ -14,10 +14,10 @@
           <div class="itemright">الاسم</div>
           <div class="itemleft">{{pharmsyInformation.firstUserName}}</div>
         </div>
-        <!-- <div class="item">
-          <div class="itemright">الرقم الهاتف</div>
-          <div class="itemleft">{{pharmsyInformation.userphone}}</div>
-        </div>-->
+        <div class="item">
+          <div class="itemright">اسم الصيدلية</div>
+          <div class="itemleft">{{pharmsyInformation.pharmacyName}}</div>
+        </div>
 
         <div class="item">
           <div @click="showeditLastname()" class="items">

@@ -15,7 +15,7 @@
           <span class="spanNumper">30min</span>
         </div>
         <div class="item">
-          <img src="~/assets/img/cart.webp" class="img" />
+          <!-- <img src="~/assets/img/cart.webp" class="img" /> -->
           <span class="spantext">تكلفة الطلب</span>
           <span class="spanNumper">00,00 EGP</span>
         </div>

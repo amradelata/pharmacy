@@ -3,11 +3,15 @@
     <div class="overlay">
       <div class="signIncards">
         <div class="signIncard">
-          <p class="is-size-1 head">صيدلية</p>
-          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <!-- <p class="is-size-1 head">صيدلية</p>
+          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>-->
+          <!-- <img src="https://static.dribbble.com/users/1081436/screenshots/4026839/untitled-3.jpg" /> -->
+          <div class="myimg"></div>
         </div>
-        <div class="signIncard">
-          <p class="is-size-3">هل لديك حساب ؟</p>
+        <div class="signIncard myquestion">
+          <p class="is-size-1 head">صيدلية</p>
+          <p class="is-size-2 has-text-black">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <p class="is-size-2 has-text-black">هل لديك حساب ؟</p>
           <!--putons  -->
           <div class="mybuttons">
             <nuxt-link to="/typelogin">
@@ -72,7 +76,7 @@ export default {
 
       const useracount = localStorage.getItem("userstat");
       if (useracount == "customer") {
-        this.$router.replace("/customer");
+        this.$router.replace("/drugs");
       } else if (useracount == "oner") {
         this.$router.replace("/signInOner2");
       }
@@ -83,22 +87,14 @@ export default {
 
 <style  scoped>
 .signIn {
-  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-consist-doctor-digital-technology_36402-141.jpg") !important;
-  background-position: center center;
-  background-size: cover;
-  text-align: center;
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-}
-.overlay {
   position: absolute;
-  background: #0000009c;
-  top: 0;
+  top: 50%;
   bottom: 0;
   right: 0;
   left: 0;
+  transform: translate(0, -50%);
 }
+
 .head {
   color: #00d1b2;
 }
@@ -106,10 +102,22 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin-right: 20px;
-  margin-top: 20%;
+}
+.myimg {
+  height: 100%;
+  width: 100%;
+  /* <img src="~/assets/img/loding.gif" /> */
+  background-image: url("https://static.dribbble.com/users/992274/screenshots/6278477/composition_with_little_men_kit8-net.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.myquestion {
+  /* margin-top: 10% !important; */
 }
 
 .signIncard {
+  text-align: center;
   flex-basis: calc(50% - 20px);
   display: inline-block;
   background-color: transparent;
@@ -136,6 +144,18 @@ export default {
   }
   .signIncards {
     margin-right: 0;
+  }
+  .myimg {
+    height: 300px;
+    display: inline-block;
+  }
+  .signIn {
+    position: absolute;
+    top: 0%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0, -0%);
   }
 }
 </style>

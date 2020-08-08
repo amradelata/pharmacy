@@ -26,7 +26,7 @@ export default {
       nameCustomerres.data.length > 0 &&
       nameCustomerres.data[0].userstat === "customer"
     ) {
-      this.$router.replace("/customer");
+      this.$router.replace("/drugs");
     } else if (
       nameresOner.data.length > 0 &&
       nameresOner.data[0].userstat === "oner"

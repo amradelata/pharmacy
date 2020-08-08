@@ -20,7 +20,7 @@ body {
 
 
 
-.btncontaner {
+/* .btncontaner {
   padding: 20px;
   background: #1d2c4d
 }
@@ -29,7 +29,7 @@ body {
   border: none;
   color: #fff;
   outline: none;
-}
+} */
 
 .notification.is-primary,
 .notification.is-danger {
@@ -55,7 +55,7 @@ body {
 @media (max-width: 480px) {
   .navbar-item img{
   
-  max-height: 1.75rem;
+  /* max-height: 1.75rem; */
 }
 }
 

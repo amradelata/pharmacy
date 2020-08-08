@@ -18,7 +18,7 @@ export default {
   methods: {
     usercustomer() {
       localStorage.setItem("userstat", "customer");
-      this.$router.replace("/customer");
+      this.$router.replace("/drugs");
     },
     useroner() {
       localStorage.setItem("userstat", "oner");

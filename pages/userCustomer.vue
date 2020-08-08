@@ -63,7 +63,20 @@
               <div class="itemleft">{{userInformation.userstat}}</div>
             </div>
           </div>
-
+          <!--  -->
+          <div class="item">
+            <div @click="youcantchangehis()">
+              <div class="itemright">خط العرض</div>
+              <div class="itemleft">{{userInformation.Latitude}}</div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="item">
+            <div @click="youcantchangehis()">
+              <div class="itemright">خط الطول</div>
+              <div class="itemleft">{{userInformation.Longitude}}</div>
+            </div>
+          </div>
           <div class="item">
             <div @click="showeditpassword()" class="items">
               <div class="itemright">تعديل كلمة السر</div>

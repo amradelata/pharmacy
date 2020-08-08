@@ -90,16 +90,16 @@ export default {
     youHaveOrder() {
       this.$refs["newOrder"].classList.toggle("displayNone");
     }
-  },
-  async created() {
-    const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
-    const res = await Axios.get(orderAPI);
-    this.orders = res.data;
-    this.orders = this.orders[1][0];
-    this.totalprice = res.data[1][1];
-    this.qty = res.data[1][2];
-    console.log(this.orders);
   }
+  // async created() {
+  //   const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
+  //   const res = await Axios.get(orderAPI);
+  //   this.orders = res.data;
+  //   this.orders = this.orders[1][0];
+  //   this.totalprice = res.data[1][1];
+  //   this.qty = res.data[1][2];
+  //   console.log(this.orders);
+  // }
 };
 </script>
 

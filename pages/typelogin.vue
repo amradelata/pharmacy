@@ -3,11 +3,15 @@
     <div class="overlay">
       <div class="signIncards">
         <div class="signIncard">
-          <p class="is-size-1 head">صيدلية</p>
-          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>
+          <!-- <p class="is-size-1 head">صيدلية</p>
+          <p class="is-size-3">اول موقع لتوصيل الأدويه فى العالم العربى</p>-->
+          <div class="myimg"></div>
+          <!-- <img
+            src="https://static.dribbble.com/users/992274/screenshots/6278477/composition_with_little_men_kit8-net.png"
+          />-->
         </div>
-        <div class="signIncard">
-          <p class="is-size-3">ما نوع حسابك ؟</p>
+        <div class="signIncard myquestion">
+          <p class="is-size-2 has-text-black">ما نوع حسابك ؟</p>
           <!--putons  -->
           <div class="mybuttons">
             <button class="button is-primary is-medium" @click="useroner()">مشترى</button>
@@ -40,30 +44,33 @@ export default {
 
 <style  scoped>
 .signIn {
-  background-image: url("https://image.freepik.com/free-vector/abstract-health-medical-science-consist-dna_36402-305.jpg") !important;
-  background-position: center center;
-  background-size: cover;
-  text-align: center;
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-}
-.overlay {
   position: absolute;
-  background: #0000009c;
-  top: 0;
+  top: 50%;
   bottom: 0;
   right: 0;
   left: 0;
+  transform: translate(0, -50%);
 }
+.myimg {
+  height: 152%;
+  width: 100%;
+  background-image: url("https://static.dribbble.com/users/26059/screenshots/6090071/gt_bakerhill_1_dribbble.jpg");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 .head {
   color: #00d1b2;
 }
 .signIncards {
   display: flex;
   flex-wrap: wrap;
-  margin-right: 20px;
-  margin-top: 20%;
+  /* margin-right: 20px; */
+  /* padding: 100px 0; */
+}
+.myquestion {
+  margin-top: 10% !important;
 }
 
 .signIncard {
@@ -73,6 +80,7 @@ export default {
   margin: 10px;
   padding: 10px;
   color: #fff;
+  text-align: center;
 }
 
 .mybuttons {
@@ -93,6 +101,18 @@ export default {
   .mybuttons button {
     margin-right: 0;
     margin-top: 20px;
+  }
+  .myimg {
+    height: 300px;
+    display: inline-block;
+  }
+  .signIn {
+    position: absolute;
+    top: 0%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0, -0%);
   }
 }
 </style>

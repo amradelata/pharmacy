@@ -1,5 +1,6 @@
 <template>
-  <div class="customer">
+  <div class="customer" ref="customer">
+    <div class="summry" ref="summry"></div>
     <customerNave />
     <!-- map -->
     <div class="map">
@@ -30,7 +31,7 @@
           <a class="button mysearchptn">بحث</a>
         </div>
       </div>
-      <ul class="carts" v-if="this.mylocalStorageCard != null">
+      <ul class="carts" v-if="this.mylocalStorageCard != null" ref="carts">
         <p class="is-size-3">cart item/s {{this.mylocalStorageQty}}</p>
 
         <li class="cart" v-for="(item,index) in mylocalStorageCard" :key="item.id">
@@ -58,9 +59,9 @@
           class="is-size-3 has-text-success"
         >{{' Total price : ' + this.mylocalStorageTolalPrice + " EGP"}}</p>
         <div class="is-size-5 flatshipping">Flat Shipping Credit 10 EGP</div>
-        <button class="button" @click="Confirm(),shownotfcation()">تاكيد الشراء</button>
+        <button class="button" @click="Confirm(),shownotfcation(),resetcart()">تاكيد الشراء</button>
       </ul>
-      <div v-for="item  in myresolts" :key="item.id" class="dad">
+      <div v-for="item  in drugs" :key="item.id" class="dad">
         <div class="child">
           <div class="mttext">
             <p class="is-size-2 name">{{item.tradename}}</p>
@@ -87,11 +88,13 @@ export default {
   components: { customerNave },
   data() {
     return {
+      restCart: [],
       drugs: [],
       search: "",
       mylocalStorageCard: [],
       mylocalStorageQty: 0,
       mylocalStorageTolalPrice: 0,
+      flatShippingCredit: 10,
       // my fake phrmsy data
       pharmsylocation: [
         { Latitude: "30.039358", Longitude: "31.233043", name: "egypt" },
@@ -169,14 +172,6 @@ export default {
       console.log(min);
     },
     //cart functions
-    savelogecstander() {
-      // localStorage
-      localStorage.setItem("totalprice", this.mylocalStorageTolalPrice);
-      localStorage.setItem("qty", this.mylocalStorageQty);
-      let mystringCart = JSON.stringify(this.mylocalStorageCard); //convert  my array of opject to string to save it on localStorage
-      localStorage.setItem("cart", mystringCart); //set cart string
-      // localStorage
-    },
 
     async add(i) {
       const addres = await axios.get(
@@ -195,7 +190,7 @@ export default {
           +this.mylocalStorageTolalPrice + +addres.data[0].price;
         this.mylocalStorageQty++;
         //save
-        this.savelogecstander(i);
+        this.savelocalstorage(i);
       } else if (
         this.mylocalStorageCard != null &&
         this.mylocalStorageCard.length > 0
@@ -203,6 +198,7 @@ export default {
         //if this the new item but not the first in cart
         let mystringCartFromLocalStorage = localStorage.getItem("cart"); //get my string cart from localStorage
         let myObject = JSON.parse(mystringCartFromLocalStorage); // return my sting to array of objects
+        console.log(myObject);
         const findInMylocalStorageCard = this.mylocalStorageCard.find(
           //search in mylocalStorageCard array of my cliked item
           item => item.id === addres.data[0].id
@@ -215,7 +211,7 @@ export default {
           this.mylocalStorageTolalPrice =
             +this.mylocalStorageTolalPrice + +findInMylocalStorageCard.price;
           //save
-          this.savelogecstander();
+          this.savelocalstorage();
         } else {
           //if i have items in my cart but this selected item not found
           addres.data[0].quantity = 1; //add new key quantity = 1
@@ -225,7 +221,7 @@ export default {
             +this.mylocalStorageTolalPrice + +addres.data[0].price;
           this.mylocalStorageQty++;
           //save
-          this.savelogecstander(i);
+          this.savelocalstorage(i);
         }
       }
     },
@@ -241,7 +237,7 @@ export default {
         +this.mylocalStorageTolalPrice + +myclickdObject.price;
 
       // save
-      this.savelogecstander();
+      this.savelocalstorage();
     },
     removefromquantty(i, index) {
       const myclickdObject = this.mylocalStorageCard.find(
@@ -257,7 +253,7 @@ export default {
         this.mylocalStorageCard.splice(index, 1);
       }
       //save
-      this.savelogecstander();
+      this.savelocalstorage();
     },
     mydelete(i, index) {
       const myclickdObject = this.mylocalStorageCard.find(
@@ -271,7 +267,15 @@ export default {
       this.mylocalStorageQty =
         +this.mylocalStorageQty + -myclickdObject.quantity;
       //save
-      this.savelogecstander();
+      this.savelocalstorage();
+    },
+    savelocalstorage() {
+      // localStorage
+      localStorage.setItem("totalprice", this.mylocalStorageTolalPrice);
+      localStorage.setItem("qty", this.mylocalStorageQty);
+      let mystringCart = JSON.stringify(this.mylocalStorageCard); //convert  my array of opject to string to save it on localStorage
+      localStorage.setItem("cart", mystringCart); //set cart string
+      // localStorage
     },
     //sent cart products to https://pharmacy-databeas.herokuapp.com/User-purchases
     async Confirm() {
@@ -279,7 +283,9 @@ export default {
       const userorder = [];
       userorder.push(
         this.mylocalStorageCard,
-        "totalprice - " + this.mylocalStorageTolalPrice,
+
+        (this.mylocalStorageTolalPrice =
+          +this.mylocalStorageTolalPrice + +this.flatShippingCredit),
         "cart qty - " + this.mylocalStorageQty,
         "name - " + this.username,
         "userLongitude - " + this.userLongitude,
@@ -294,6 +300,17 @@ export default {
         title: "تم الطلب بنجاح",
         text: "توقع ان يتم التوصيل فى نصف ساعة "
       });
+    },
+    resetcart() {
+      //this function worck on تاكيد الطب
+      localStorage.setItem("totalprice", 0);
+      localStorage.setItem("qty", 0);
+      let mystringCart = JSON.stringify(this.restCart); //convert  my array of opject to string to save it on localStorage
+      localStorage.setItem("cart", mystringCart);
+      window.location.reload();
+      this.$refs["carts"].style.display = "none";
+      // this.$refs["customer"].style.display = "none";
+      // this.$refs["summry"].style.display = "block";
     }
     //cart functions
   }
@@ -301,6 +318,16 @@ export default {
 </script>
 
 <style  scoped>
+.summry {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #22282f;
+  z-index: 999999;
+  display: none;
+}
 .searchdrug {
   margin-bottom: 50px;
 }
