@@ -1,5 +1,5 @@
 <template>
-  <div class="container is-fluid">
+  <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <nuxt-link to="/" class="navbar-item">
@@ -125,9 +125,7 @@ export default {
   margin-right: auto;
   margin-left: 0;
 }
-.container.is-fluid {
-  padding: 0;
-}
+
 .navbar,
 #navbarphone {
   padding-right: 35px;

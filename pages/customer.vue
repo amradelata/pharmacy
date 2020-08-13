@@ -15,7 +15,7 @@
     </div>
     <!-- map -->
 
-    <div class="container ltr">
+    <div class="ltr">
       <!-- show The nearest pharmacy to the user-->
       <button
         class="button mysearchptn near"

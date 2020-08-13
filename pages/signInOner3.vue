@@ -86,8 +86,8 @@
                   <!--  -->
                   <button
                     class="button mysearchptn near"
-                    @click="getyourLocation(),runGetDistance()"
-                  >اقرب صيدلية</button>
+                    @click="getyourLocation(),runGetDistance(),shownotfcation()"
+                  >الحصول على موقعك</button>
                   <button class="button is-primary" @click="submit()">تسجيل الحساب</button>
                 </div>
               </div>
@@ -103,6 +103,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 const pharmacyInformation =
   "https://pharmacy-databeas.herokuapp.com/pharmacyOner-Information";
 export default {
@@ -152,19 +153,18 @@ export default {
         alert("هذا الاسم موجود بالفعل ");
         return;
       } else if (
-        this.userphone === "" ||
         this.firstUserName === "" ||
+        this.userphone === "" ||
+        this.password === "" ||
         this.email === "" ||
         this.pharmacyName === "" ||
         this.pharmacyhotligh === "" ||
-        this.city === "" ||
-        this.region === "" ||
-        this.street === "" ||
-        this.buildingNumber === "" ||
-        this.breadthOfTheConnectionSpace === "" ||
-        this.Latitude === "" ||
-        this.Longitude === "" ||
-        this.firstUserName === ""
+        this.pharmacycity === "" ||
+        this.pharmacyregion === "" ||
+        this.pharmacystreet === "" ||
+        this.pharmacybuildingNumber === "" ||
+        this.pharmacybreadthOfTheConnectionSpace === "" ||
+        this.pharmacyLatitude === ""
       ) {
         alert("من فضلك فم بمليء كل البيانات ");
         return;
@@ -239,8 +239,15 @@ export default {
       const arr = this.pharmsylocation.map(this.getDistanceFromLatLonInKm);
       const min = Math.min(...arr);
       console.log(min);
-    }
+    },
     // get Your nearest pharmacy
+    shownotfcation() {
+      // start animation delete popup
+      Swal.fire({
+        title: "تم الحصول على موقعك ",
+        text: "كل بياناتك يتم حفظها فى سرية تامة"
+      });
+    }
   }
 };
 </script>

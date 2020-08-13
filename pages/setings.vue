@@ -1,11 +1,12 @@
 <template>
   <div class="setings">
     <myVav />
-    <div class="container">
+    <div class="mycontainer">
       <div class="setings">
         <div class="head">
           <span class="itemright">اعدادات الصفحه</span>
-          <button class="itemleft button is-rounded" @click="seave()">حفظ</button>
+
+          <button class="itemleft button is-rounded saveptn" @click="seave()">حفظ</button>
         </div>
         <div class="suphead">
           <span>بيانات الصيدليه</span>
@@ -275,6 +276,9 @@ export default {
 .itemright,
 .itemleft {
   display: inline-block;
+}
+.saveptn {
+  left: 100px !important;
 }
 .item {
   border-bottom: 1px solid #cccccc38;

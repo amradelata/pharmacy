@@ -1,7 +1,7 @@
 <template>
   <div class="acseptOrderOne">
     <myVav />
-    <div class="done">
+    <div class="done mycontainer">
       <p class="is-size-1 has-text-success refusetext">قبول الطلب</p>
       <p
         class="is-size-3 refusetextparagraph"
@@ -13,16 +13,16 @@
         <div class="myitem">
           <!-- <img src="~/assets/img/cart.webp" class="img" /> -->
           <span class="spantext">تكلفة الطلب</span>
-          <span class="spanNumper">00,00 EGP</span>
+          <span class="spanNumper">{{this.totalprice +' EGP'}}</span>
         </div>
 
         <div class="item">
           <span class="total">المجموع</span>
-          <span class="totalNumper">00,00 EGP</span>
+          <span class="totalNumper">{{this.totalprice +' EGP'}}</span>
         </div>
       </div>
       <div style="text-align: center;">
-        <nuxt-link to="/done">
+        <nuxt-link to="/">
           <button class="button is-success">تاكيد قبول الطلب</button>
         </nuxt-link>
       </div>
@@ -31,9 +31,26 @@
 </template>
 <script>
 import myVav from "~/components/myVav.vue";
+import Axios from "axios";
 export default {
   components: {
     myVav
+  },
+  data() {
+    return {
+      orders: [],
+      qty: 0,
+      totalprice: 0
+    };
+  },
+  async created() {
+    const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
+    const res = await Axios.get(orderAPI);
+    this.orders = res.data;
+    this.orders = this.orders[1][0];
+    this.totalprice = res.data[1][1];
+    this.qty = res.data[1][2];
+    console.log(this.orders);
   }
 };
 </script>

@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <div class="cancel">
+  <div>
+    <myVav />
+    <div class="cancel mycontainer">
       <p class="is-size-1 has-text-danger refusetext">رفض الطلب</p>
       <p
         class="is-size-3 refusetextparagraph"
@@ -41,11 +42,19 @@
     </div>
   </div>
 </template>
+<script>
+import myVav from "~/components/myVav.vue";
+export default {
+  components: {
+    myVav
+  }
+};
+</script>
 
 <style scoped>
 .cancel {
   text-align: center;
-  color: aliceblue;
+  /* color: aliceblue; */
 }
 .radiocard {
   text-align: start;

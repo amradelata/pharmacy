@@ -2,7 +2,7 @@
   <div class="user">
     <customerNave />
     <div>
-      <div class="container">
+      <div class="mycontainer">
         <div class="setingsuser">
           <div class="head">
             <span class="itemright">اضغط على الحقل للتغيير</span>
@@ -167,9 +167,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  padding: 0 20px;
-}
 .user {
   background: #1d2c4d;
   padding-bottom: 100px;

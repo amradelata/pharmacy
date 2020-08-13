@@ -6,6 +6,11 @@ body {
 }
 
 
+.mycontainer {
+  width: 100vw;
+  padding: 35px 100px;
+  background: #192a56;
+}
 
 .notification {
   text-align: center
@@ -52,11 +57,12 @@ body {
 
 
 /* phone  */
-@media (max-width: 480px) {
-  .navbar-item img{
-  
-  /* max-height: 1.75rem; */
-}
+@media (max-width: 500px) {
+  .mycontainer {
+    padding: 20px ;
+    
+  }
+
 }
 
 /* laptop */

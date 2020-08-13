@@ -1,7 +1,7 @@
 <template>
   <div>
     <myVav />
-    <div class="container">
+    <div class>
       <div class="setingsuser">
         <div class="head">
           <span class="itemright">الحساب</span>

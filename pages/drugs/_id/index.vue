@@ -1,12 +1,25 @@
 <template>
-  <div class="mttext">
+  <div>
+    <!--  -->
+    <!-- {
+    "id": 1,
+    "tradename": "1,2,3 (One Two Three) 20 F.C. Tab.",
+    "activeingredient": "CHLORPHENIRAMINE+PARACETAMOL(ACETAMINOPHEN)+PSEUDOEPHEDRINE",
+    "price": "15",
+    "company": "HIKMA PHARMA",
+    "group": "",
+    "pamphlet": "Indication:\nrunny noses\nblocked noses and sinus\nsneezing\nwatery, itchy eyes\nsinus pain\nfever, headache, body aches & pain\n\ninformation:\nPseudoephedrine hydrochloride belongs to a group of medicines called sympathomimetic decongestants.\nIt works by reducing congestion in the upper respiratory tract, including the nose, nasal passages and sinuses, making it easier to breathe.\nChlorpheniramine maleate belongs to a group of medicines called antihistamines . Antihistamines help reduce allergic symptoms by preventing the effects of a substance called histamine. Histamine is produced by the body in response to foreign substances that the body is allergic to.\nParacetamol works to stop the pain messages from getting through to the brain. It also acts in the brain to reduce fever.",
+    "dosage": "",
+    "composition": ""
+    },-->
+    <!--  -->
     <customerNave />
-    <div class="mycontainer">
-      <p class="is-size-2 name">{{drugs.tradename}}</p>
-      <p class="is-size-5 price has-text-success">{{ "price : "+drugs.price + ' EGP'}}</p>
-
+    <div class="mycontainer singlepage">
+      <p class="is-size-2 name">{{'Tradename : '+ drugs.tradename}}</p>
       <p class="is-size-6 color has-text-info">{{drugs.company}}</p>
-      <p class="is-size-5">{{this.drugs.pamphlet}}</p>
+      <p class="is-size-5">{{ 'Pamphlet : ' +this.drugs.pamphlet}}</p>
+      <p class="is-size-3 price has-text-success">{{ "price : "+drugs.price + ' EGP'}}</p>
+
       <div class="mybuttons">
         <!-- <nuxt-link to="/cart"> -->
         <button class="addbutton button is-success" @click="add( i = drugs.id )">add to cart</button>
@@ -19,6 +32,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 import customerNave from "~/components/customerNave.vue";
 export default {
   components: { customerNave },
@@ -97,7 +111,8 @@ export default {
         }
       }
 
-      this.$router.go();
+      // this.$router.go();
+      this.$router.push("/cart");
     },
     addtoquantty(i) {
       const myclickdObject = this.mylocalStorageCard.find(
@@ -151,12 +166,28 @@ export default {
       localStorage.setItem("cart", mystringCart); //set cart string
       // localStorage
     }
+    // shownotfcation() {
+    //   // start animation delete popup
+    //   Swal.fire({
+    //     position: "top-end",
+    //     icon: "success",
+    //     title: "Add item to cart",
+    //     showConfirmButton: false,
+    //     timer: 1500,
+    //     html: '<a href="/cart">cart</a>'
+    //   });
+    // }
   }
 };
 </script>
 
 <style scoped>
-.mycontainer {
-  padding: 0 100px;
+.singlepage {
+  background: #fff !important;
+  /* direction: ltr; */
+  text-align: center;
+}
+p {
+  margin: 50px 35px;
 }
 </style>

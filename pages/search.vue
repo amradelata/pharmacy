@@ -52,10 +52,7 @@ export default {
 
 
 <style scoped>
-.mycontainer {
-  width: 100vw;
-  padding: 35px 100px;
-}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -74,8 +71,6 @@ export default {
   .card {
     flex-basis: calc(100% - 20px);
   }
-  .mycontainer {
-    padding: 35px 10px;
-  }
+
 }
 </style>

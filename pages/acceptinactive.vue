@@ -1,7 +1,7 @@
 <template>
   <div class="acseptOrderTow">
     <myVav />
-    <div class="cancel">
+    <div class="cancel mycontainer">
       <p class="is-size-1 has-text-success refusetext">قبول الطلب</p>
       <p
         class="is-size-3 refusetextparagraph"
@@ -15,19 +15,19 @@
           <span class="spanNumper">30min</span>
         </div>
         <div class="item">
-          <!-- <img src="~/assets/img/cart.webp" class="img" /> -->
+          <img src="~/assets/img/cart.png" class="img" />
           <span class="spantext">تكلفة الطلب</span>
-          <span class="spanNumper">00,00 EGP</span>
+          <span class="spanNumper">{{this.totalprice }}</span>
         </div>
         <div class="item">
           <img src="~/assets/img/Vespa.png" class="img" />
           <span class="spantext">رسوم التوصيل</span>
-          <span class="spanNumper">00,00 EGP</span>
+          <span class="spanNumper">10,00 EGP</span>
         </div>
         <hr />
         <div class="item">
           <span class="total">المجموع</span>
-          <span class="totalNumper">00,00 EGP</span>
+          <span class="totalNumper">{{this.totalprice +' EGP'}}</span>
         </div>
       </div>
       <div style="text-align: center;">
@@ -40,18 +40,31 @@
 </template>
 <script>
 import myVav from "~/components/myVav.vue";
+import Axios from "axios";
 export default {
   components: {
     myVav
+  },
+  data() {
+    return {
+      orders: [],
+      qty: 0,
+      totalprice: 0
+    };
+  },
+  async created() {
+    const orderAPI = "https://pharmacy-databeas.herokuapp.com/User-purchases";
+    const res = await Axios.get(orderAPI);
+    this.orders = res.data;
+    this.orders = this.orders[1][0];
+    this.totalprice = res.data[1][1];
+    this.qty = res.data[1][2];
+    console.log(this.orders);
   }
 };
 </script>
 
 <style scoped>
-.acseptOrderTow {
-  background: #1d2c4d;
-  padding-bottom: 100px;
-}
 .cancel {
   text-align: center;
   color: aliceblue;

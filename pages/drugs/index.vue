@@ -65,6 +65,7 @@ export default {
     const res = await axios.get(API);
     this.drugs = res.data;
     this.drugs = this.drugs.slice(0, 24);
+    console.log(this.drugs);
   },
   computed: {
     myresolts() {
@@ -124,11 +125,6 @@ export default {
 </script>
 
 <style scoped>
-.mycontainer {
-  width: 100vw;
-  padding: 35px 100px;
-  background: #192a56;
-}
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -146,9 +142,6 @@ export default {
 @media screen and (max-width: 768px) {
   .card {
     flex-basis: calc(100% - 20px);
-  }
-  .mycontainer {
-    padding: 35px 10px;
   }
 }
 </style>

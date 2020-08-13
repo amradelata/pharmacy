@@ -1,11 +1,11 @@
 <template>
   <div class="user">
     <myVav />
-    <div class="container">
+    <div class="mycontainer">
       <div class="setingsuser">
         <div class="head">
           <span class="itemright">الحساب</span>
-          <button class="itemleft button is-rounded" @click="seave()">حفظ</button>
+          <button class="itemleft button is-rounded saveptn" @click="seave()">حفظ</button>
         </div>
         <div class="suphead">
           <span>بيانات الخصوصية</span>
@@ -184,6 +184,9 @@ export default {
 .itemleft {
   position: absolute;
   left: 0;
+}
+.saveptn {
+  left: 100px;
 }
 .suphead {
   background: #e2e2e2;

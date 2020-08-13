@@ -1,7 +1,7 @@
 <template>
   <div>
     <customerNave />
-    <div class="mycontainer">
+    <div class="mycontainer cartpage">
       <ul class="carts" v-if="this.mylocalStorageCard != null" ref="carts">
         <p class="is-size-3">cart item/s {{this.mylocalStorageQty}}</p>
 
@@ -29,7 +29,7 @@
         <p
           class="is-size-3 has-text-success"
         >{{' Total price : ' + this.mylocalStorageTolalPrice + " EGP"}}</p>
-        <div class="is-size-5 flatshipping">Flat Shipping Credit 10 EGP</div>
+        <!-- <div class="is-size-5 flatshipping">Flat Shipping Credit 10 EGP</div> -->
         <nuxt-link to="checkout">
           <button class="button">Proceed to checkout</button>
         </nuxt-link>
@@ -146,8 +146,18 @@ export default {
 </script>
 
 <style scoped>
-.mycontainer {
-  padding: 0 100px;
-  width: 100vw;
+.cart {
+  border: 1px solid #000;
+  margin: 35px 0;
+  padding: 20px;
+  background: #273c75;
+  color: #fff;
+}
+.cartbuttons {
+  margin: 20px 0;
+}
+.cartpage {
+  background: #fff !important;
+  direction: ltr;
 }
 </style>

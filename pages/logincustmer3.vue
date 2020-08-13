@@ -51,7 +51,7 @@ export default {
     async submit() {
       localStorage.setItem("userpassword", this.password);
       localStorage.setItem("userfirstName", this.firstName);
-      // localStorage.setItem("myPharmacyName", this.pharmacyName);
+      localStorage.setItem("myPharmacyName", this.pharmacyName);
       const nameres = await axios.get(
         `https://pharmacy-databeas.herokuapp.com/userCustomer-information/?firstName=${this.firstName}`
       );
